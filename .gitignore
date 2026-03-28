@@ -1,0 +1,8 @@
+.next
+node_modules
+out
+dist
+.vercel
+*.log
+yarn.lock
+pnpm-lock.yaml

@@ -36,4 +36,3 @@ Create these folders when you are ready to add real media:
 - `public/videos`
 
 Then switch image URLs to local paths such as `/images/projects/ember-mile-cover.jpg`.
-# aryan-portfolio
