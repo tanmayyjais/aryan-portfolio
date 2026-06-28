@@ -44,6 +44,11 @@ img {
   max-width: 100%;
 }
 
+video,
+iframe {
+  display: block;
+}
+
 .container-shell {
   width: min(1200px, calc(100% - 2rem));
   margin: 0 auto;

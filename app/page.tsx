@@ -1,15 +1,15 @@
-import { AboutSection } from "@/components/about-section";
+import { BiographySection } from "@/components/biography-section";
 import { CinematicLoader } from "@/components/cinematic-loader";
 import { ContactSection } from "@/components/contact-section";
 import { CursorSpotlight } from "@/components/cursor-spotlight";
+import { FeaturedFilmSection } from "@/components/featured-film-section";
 import { FilmGrain } from "@/components/film-grain";
 import { Footer } from "@/components/footer";
-import { GallerySection } from "@/components/gallery-section";
 import { HeroSection } from "@/components/hero-section";
-import { ProjectsSection } from "@/components/projects-section";
-import { ShowreelSection } from "@/components/showreel-section";
-import { SkillsSection } from "@/components/skills-section";
+import { PhotographySection } from "@/components/photography-section";
+import { ServicesSection } from "@/components/services-section";
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
+import { VisualNarrativesSection } from "@/components/visual-narratives-section";
 
 export default function HomePage() {
   return (
@@ -21,11 +21,11 @@ export default function HomePage() {
 
       <div className="relative z-10">
         <HeroSection />
-        <AboutSection />
-        <ProjectsSection />
-        <ShowreelSection />
-        <SkillsSection />
-        <GallerySection />
+        <FeaturedFilmSection />
+        <VisualNarrativesSection />
+        <PhotographySection />
+        <BiographySection />
+        <ServicesSection />
         <ContactSection />
         <Footer />
       </div>

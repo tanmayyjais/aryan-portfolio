@@ -15,22 +15,34 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Aryan Kumar | Cinematography Portfolio",
+  title: "Aryan Kumar | Filmmaker & Cinematographer",
   description:
-    "Immersive cinematography portfolio for Aryan Kumar, a visual storyteller and BSc Cinematography student at AAFT Delhi.",
+    "A premium cinematography portfolio for Aryan Kumar, featuring Focal Void, visual narratives, editorial stills, and a growing auteur voice from AAFT Delhi.",
   keywords: [
     "Aryan Kumar",
     "cinematography portfolio",
     "filmmaker portfolio",
     "AAFT Delhi",
-    "student cinematographer"
+    "student cinematographer",
+    "Focal Void",
+    "DRYSHTIKAAR"
   ],
   openGraph: {
-    title: "Aryan Kumar | Cinematography Portfolio",
-    description: "Capturing emotion through light, motion, and frame.",
-    type: "website"
+    title: "Aryan Kumar | Filmmaker & Cinematographer",
+    description:
+      "Focal Void, curated visual narratives, and editorial stills presented through a premium film-microsite experience.",
+    type: "website",
+    url: "https://aryannkumar.vercel.app/",
+    images: [
+      {
+        url: "/media/hero/hero-still-alt.jpg",
+        width: 1920,
+        height: 1080,
+        alt: "Focal Void hero still for Aryan Kumar portfolio",
+      },
+    ],
   },
-  metadataBase: new URL("https://example.com")
+  metadataBase: new URL("https://aryannkumar.vercel.app")
 };
 
 export default function RootLayout({

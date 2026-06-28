@@ -31,7 +31,7 @@ export function CinematicLoader() {
             <div className="space-y-2">
               <p className="eyebrow">Now Screening</p>
               <p className="font-display text-4xl tracking-[0.15em] text-paper">
-                ARYAN KUMAR
+                DRYSHTIKAAR
               </p>
             </div>
             <div className="h-px w-48 overflow-hidden rounded-full bg-white/10">
