@@ -21,6 +21,10 @@ export type PortfolioEntry = {
   sourceLabel: string;
   href?: string;
   featured?: boolean;
+  synopsis?: string;
+  credits?: { label: string; value: string }[];
+  specs?: string;
+  exif?: string;
 };
 
 export type AboutExperience = {

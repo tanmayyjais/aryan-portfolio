@@ -7,11 +7,11 @@ import type {
 
 export const hero = {
   name: "Aryan Kumar",
-  role: "Filmmaker / Cinematographer / Editor",
-  statement: "Visual studies in stillness, tension, portraiture, and motion.",
+  role: "Cinematographer • Filmmaker • Editor",
+  statement: "Capturing raw human emotion through light, shadow, and frame.",
   background: {
-    src: "/media/photography/editorial-01.jpg",
-    alt: "Editorial portrait from Aryan Kumar's photography series",
+    src: "/media/hero/hero-still.jpg",
+    alt: "Cinematic portrait from Aryan Kumar's cinematography series",
     type: "image",
     orientation: "portrait",
     width: 1280,
@@ -28,31 +28,39 @@ export const selectedWorks: PortfolioEntry[] = [
     year: "2026",
     role: "Director / Cinematography / Edit",
     sourceLabel: "Short Film",
-    href: "https://www.youtube.com/watch?v=28RcRST1YJM",
+    href: "https://youtu.be/28RcRST1YJM",
     featured: true,
     thumbnail: {
-      src: "/media/films/focal-void/still-01.jpg",
-      alt: "Black and white frame from Focal Void",
+      src: "/media/films/focal-void/still-02.jpg",
+      alt: "Frame still from Focal Void showing cinematic lighting",
       type: "image",
       orientation: "landscape",
       width: 1920,
       height: 1080,
     },
     media: {
-      src: "/media/films/focal-void/still-01.jpg",
-      alt: "Black and white frame from Focal Void",
+      src: "/media/films/focal-void/still-02.jpg",
+      alt: "Frame still from Focal Void showing cinematic lighting",
       type: "image",
       orientation: "landscape",
       width: 1920,
       height: 1080,
     },
+    synopsis: "A psychological study of isolation and visual tension. A story told in high-contrast frames where stillness speaks louder than movement. Explores the thin line between reality and mental projections.",
+    credits: [
+      { label: "Writer & Director", value: "Aryan Kumar" },
+      { label: "Cinematographer", value: "Aryan Kumar" },
+      { label: "Editor", value: "Aryan Kumar" },
+      { label: "Production House", value: "AAFT Delhi" },
+    ],
+    specs: "Sony Mirrorless • 24mm Prime Lens • DaVinci Resolve color grade",
   },
   {
     id: "ten-shot",
-    title: "10 Shot by Aryan Kumar",
+    title: "10 Shot study",
     kind: "clip",
     year: "2025",
-    role: "Direction / Camera",
+    role: "Direction / Camera / Grade",
     sourceLabel: "Motion Study",
     thumbnail: {
       src: "/media/reels/ten-shot-01.jpg",
@@ -72,13 +80,19 @@ export const selectedWorks: PortfolioEntry[] = [
       poster: "/media/reels/ten-shot-01.jpg",
       previewSrc: "/media/reels/ten-shot-preview.mp4",
     },
+    synopsis: "Ten carefully structured static and dynamic frames exploring architectural geometry, lighting gradients, and spatial orientation. An investigation into structural composition.",
+    credits: [
+      { label: "Cinematographer", value: "Aryan Kumar" },
+      { label: "Editor & Colorist", value: "Aryan Kumar" },
+    ],
+    specs: "Sony Mirrorless • 50mm f/1.8 Lens • 4K 24fps",
   },
   {
     id: "intellectual-montage",
     title: "Intellectual Montage",
     kind: "clip",
     year: "2025",
-    role: "Direction / Edit",
+    role: "Direction / Edit / Assembly",
     sourceLabel: "Montage Study",
     thumbnail: {
       src: "/media/reels/intellectual-02.jpg",
@@ -98,13 +112,19 @@ export const selectedWorks: PortfolioEntry[] = [
       poster: "/media/reels/intellectual-02.jpg",
       previewSrc: "/media/reels/intellectual-preview.mp4",
     },
+    synopsis: "An editing exercise juxtaposing contrasting images to create a distinct emotional resonance, drawing inspiration from Soviet montage theory and intellectual associations.",
+    credits: [
+      { label: "Concept & Edit", value: "Aryan Kumar" },
+      { label: "Footage Assembly", value: "Aryan Kumar" },
+    ],
+    specs: "Adobe Premiere Pro • Mixed Media Assets",
   },
   {
     id: "montage",
     title: "Montage",
     kind: "clip",
     year: "2025",
-    role: "Edit / Rhythm",
+    role: "Edit / Rhythm / Pace",
     sourceLabel: "Mood Exercise",
     thumbnail: {
       src: "/media/reels/montage-02.jpg",
@@ -124,10 +144,15 @@ export const selectedWorks: PortfolioEntry[] = [
       poster: "/media/reels/montage-02.jpg",
       previewSrc: "/media/reels/montage-preview.mp4",
     },
+    synopsis: "A rapid-paced visual sequence focusing on movement speed, light shifts, and the rhythm of cutting on action. A study on how temporal pacing dictates narrative tension.",
+    credits: [
+      { label: "Editor", value: "Aryan Kumar" },
+    ],
+    specs: "Adobe Premiere Pro • Color Graded in Premiere",
   },
   {
     id: "editorial-01",
-    title: "Editorial Portrait 01",
+    title: "Editorial portrait 01",
     kind: "photo",
     year: "2025",
     role: "Photography",
@@ -148,10 +173,11 @@ export const selectedWorks: PortfolioEntry[] = [
       width: 1280,
       height: 1706,
     },
+    exif: "Prime Lens • f/1.8 • 1/160s • ISO 200",
   },
   {
     id: "editorial-02",
-    title: "Editorial Portrait 02",
+    title: "Editorial portrait 02",
     kind: "photo",
     year: "2025",
     role: "Photography",
@@ -172,6 +198,7 @@ export const selectedWorks: PortfolioEntry[] = [
       width: 1280,
       height: 1706,
     },
+    exif: "Prime Lens • f/2.0 • 1/200s • ISO 400",
   },
 ];
 
@@ -184,7 +211,7 @@ export const stills: PortfolioEntry[] = [
   selectedWorks[5],
   {
     id: "editorial-03",
-    title: "Portrait Study 03",
+    title: "Portrait study 03",
     kind: "photo",
     year: "2025",
     role: "Photography",
@@ -205,10 +232,11 @@ export const stills: PortfolioEntry[] = [
       width: 1280,
       height: 1706,
     },
+    exif: "Prime Lens • f/2.2 • 1/160s • ISO 320",
   },
   {
     id: "editorial-04",
-    title: "Portrait Study 04",
+    title: "Portrait study 04",
     kind: "photo",
     year: "2025",
     role: "Photography",
@@ -229,10 +257,11 @@ export const stills: PortfolioEntry[] = [
       width: 1280,
       height: 1706,
     },
+    exif: "Prime Lens • f/1.8 • 1/250s • ISO 100",
   },
   {
     id: "editorial-05",
-    title: "Portrait Study 05",
+    title: "Portrait study 05",
     kind: "photo",
     year: "2025",
     role: "Photography",
@@ -253,14 +282,15 @@ export const stills: PortfolioEntry[] = [
       width: 1280,
       height: 1706,
     },
+    exif: "Prime Lens • f/1.8 • 1/160s • ISO 250",
   },
 ];
 
 export const about: AboutBlock = {
   statement:
-    "Aryan Kumar is a first-year cinema student at AAFT Delhi, building a practice around image-making, mood, editing rhythm, and minimal setups.",
+    "Aryan Kumar is a 1st-year BSc Cinematography student at AAFT Delhi, sculpting stories out of light, shadows, and temporal pacing.",
   education:
-    "Asian Academy of Film & Television, Bachelors in Cinema (2028) / Diploma in Mass Communication & Journalism, Uttaranchal University (2025)",
+    "Asian Academy of Film & Television (AAFT), Noida — 1st Year BSc Cinematography (2025 - Present) / Uttaranchal University — Diploma in Mass Communication & Journalism (2022 - 2025)",
   experience: [
     {
       title: "Lead Photographer / UU Fest",
@@ -272,6 +302,33 @@ export const about: AboutBlock = {
     },
   ],
 };
+
+export const services = [
+  {
+    id: "direction",
+    title: "Direction",
+    description: "Developing visual concepts, storyboards, and blocking styles. Organizing thematic mood boards and translating textual beats into distinct emotional rhythms on set.",
+    gear: "Treatment Decks • Moodboards • Screenplay Assembly • Shot-listing",
+  },
+  {
+    id: "cinematography",
+    title: "Cinematography",
+    description: "Sculpting light, deciding spatial composition, lens selection, camera setups, and fluid motion. Expert in high-contrast low-light atmospheres and color theory.",
+    gear: "Sony Mirrorless Setups • Prime Lenses (24mm, 35mm, 50mm, 85mm) • Gimbals & Rigging",
+  },
+  {
+    id: "editing",
+    title: "Editing",
+    description: "Pacing narrative beats, rhythmic montage assembly, sound design layering, and precise color grading to evoke character psychology.",
+    gear: "DaVinci Resolve Studio • Adobe Premiere Pro • After Effects • Audition",
+  },
+  {
+    id: "writing",
+    title: "Writing",
+    description: "Crafting atmospheric screenplay structures, character arcs, and punchy thematic concepts designed for visual-first storytelling.",
+    gear: "Final Draft • Celtx • Visual Treatment Outlines",
+  },
+];
 
 export const contact = {
   email: "aryannkumar29@gmail.com",

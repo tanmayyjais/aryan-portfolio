@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 
 import "./globals.css";
+import { CinematicLoader } from "@/components/cinematic-loader";
+import { FilmGrain } from "@/components/film-grain";
+import { CursorSpotlight } from "@/components/cursor-spotlight";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -15,9 +18,9 @@ const body = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Aryan Kumar | Filmmaker, Cinematographer, Editor",
+  title: "Aryan Kumar | Cinematographer, Filmmaker, Editor",
   description:
-    "A minimal editorial portfolio for Aryan Kumar featuring short films, motion studies, and portrait photography from AAFT Delhi.",
+    "The official cinematography portfolio of Aryan Kumar, student at AAFT Delhi. Showcasing short films (Focal Void), composition motion studies, and editorial photography.",
   keywords: [
     "Aryan Kumar",
     "cinematography portfolio",
@@ -25,12 +28,12 @@ export const metadata: Metadata = {
     "AAFT Delhi",
     "student cinematographer",
     "portrait photography",
-    "DRYSHTIKAAR",
+    "DRISHTIIKAAR",
   ],
   openGraph: {
-    title: "Aryan Kumar | Filmmaker, Cinematographer, Editor",
+    title: "Aryan Kumar | Cinematographer, Filmmaker, Editor",
     description:
-      "Short films, motion studies, and portrait photography presented through a minimal editorial portfolio.",
+      "Showcasing short films, composition studies, and editorial photography through a high-end dark cinematic experience.",
     type: "website",
     url: "https://aryannkumar.vercel.app/",
     images: [
@@ -38,7 +41,7 @@ export const metadata: Metadata = {
         url: "/media/photography/editorial-01.jpg",
         width: 1280,
         height: 1706,
-        alt: "Editorial portrait from Aryan Kumar's portfolio",
+        alt: "Editorial portrait photographed by Aryan Kumar",
       },
     ],
   },
@@ -52,7 +55,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body>{children}</body>
+      <body className="antialiased">
+        <CinematicLoader />
+        <FilmGrain />
+        <CursorSpotlight />
+        {children}
+      </body>
     </html>
   );
 }
