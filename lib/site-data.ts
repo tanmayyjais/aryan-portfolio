@@ -1,205 +1,146 @@
 import type {
-  BioBlock,
+  AboutBlock,
   ContactLink,
-  FeaturedFilm,
-  FilmEntry,
   MediaAsset,
-  PhotoEntry,
-  ReelEntry,
-  ServiceEntry,
+  PortfolioEntry,
 } from "@/lib/types";
 
 export const hero = {
   name: "Aryan Kumar",
-  role: "Filmmaker / Cinematographer / Visual Storyteller",
-  statement:
-    "Emerging from AAFT Delhi with a strong instinct for mood, detail, and visual tension, Aryan builds stories through light, silence, texture, and carefully observed human moments.",
+  role: "Filmmaker / Cinematographer / Editor",
+  statement: "Visual studies in stillness, tension, portraiture, and motion.",
   background: {
-    src: "/media/hero/hero-still-alt.jpg",
-    alt: "Black and white still from Focal Void showing a lone figure at a desk",
+    src: "/media/photography/editorial-01.jpg",
+    alt: "Editorial portrait from Aryan Kumar's photography series",
     type: "image",
-    orientation: "landscape",
-    width: 1920,
-    height: 1080,
+    orientation: "portrait",
+    width: 1280,
+    height: 1706,
     priority: true,
   } satisfies MediaAsset,
-  stats: [
-    { label: "Flagship Film", value: "Focal Void" },
-    { label: "Visual Studies", value: "03" },
-    { label: "Editorial Frames", value: "05" },
-  ],
 };
 
-export const featuredFilm: FeaturedFilm = {
-  title: "Focal Void",
-  year: "2026",
-  runtime: "2m 47s",
-  logline:
-    "A young filmmaker slips into obsession, isolation, and creative pressure while trying to make something that matters.",
-  description:
-    "Focal Void is a psychological indie short built around ambition, artistic loneliness, and the emotional cost of image-making. The presentation here leads with stark monochrome stills, tactile darkness, and a restrained sense of dread to reflect the film's inner spiral.",
-  role: "Director / Cinematography / Editing",
-  embedUrl: "https://www.youtube.com/embed/28RcRST1YJM",
-  poster: {
-    src: "/media/films/focal-void/poster.jpg",
-    alt: "Poster thumbnail for Focal Void short film",
-    type: "image",
-    orientation: "landscape",
-    width: 1920,
-    height: 1080,
-  },
-  stills: [
-    {
-      src: "/media/films/focal-void/still-01.jpg",
-      alt: "Focal Void still featuring the protagonist in black and white",
-      type: "image",
-      orientation: "landscape",
-      width: 1920,
-      height: 1080,
-      caption: "Isolation settles in before the breakdown becomes visible.",
-    },
-    {
-      src: "/media/films/focal-void/still-02.jpg",
-      alt: "Desk lamp silhouette from Focal Void with quote overlay",
-      type: "image",
-      orientation: "landscape",
-      width: 1920,
-      height: 1080,
-      caption: "A memorable internal line becomes part of the visual language.",
-    },
-    {
-      src: "/media/films/focal-void/still-03.jpg",
-      alt: "Backlit desk silhouette still from Focal Void",
-      type: "image",
-      orientation: "landscape",
-      width: 1920,
-      height: 1080,
-      caption: "Monochrome contrast and a single practical source define the mood.",
-    },
-  ],
-  credits: [
-    "Director: Aryan A Gupta",
-    "Cinematography: Aryan A Gupta",
-    "Editing: Aryan A Gupta",
-    "Sound Design: Samaksh Gupta",
-    "Starring: Shreyansh Kumar Singh",
-    "Genre: Psychological Drama / Indie Short",
-  ],
-};
-
-export const filmography: FilmEntry[] = [
+export const selectedWorks: PortfolioEntry[] = [
   {
+    id: "focal-void",
     title: "Focal Void",
+    kind: "film",
     year: "2026",
-    format: "Psychological Short Film",
-    note: "Flagship narrative work and central case study of the site.",
+    role: "Director / Cinematography / Edit",
+    sourceLabel: "Short Film",
+    href: "https://www.youtube.com/watch?v=28RcRST1YJM",
+    featured: true,
+    thumbnail: {
+      src: "/media/films/focal-void/still-01.jpg",
+      alt: "Black and white frame from Focal Void",
+      type: "image",
+      orientation: "landscape",
+      width: 1920,
+      height: 1080,
+    },
+    media: {
+      src: "/media/films/focal-void/still-01.jpg",
+      alt: "Black and white frame from Focal Void",
+      type: "image",
+      orientation: "landscape",
+      width: 1920,
+      height: 1080,
+    },
   },
   {
+    id: "ten-shot",
     title: "10 Shot by Aryan Kumar",
+    kind: "clip",
     year: "2025",
-    format: "Visual Exercise",
-    note: "A stylized study in tension, framing, and expressive light falloff.",
-  },
-  {
-    title: "Intellectual Montage",
-    year: "2025",
-    format: "Montage Study",
-    note: "Night-time atmosphere built through detail cuts, skyline tension, and rhythm.",
-  },
-  {
-    title: "Montage",
-    year: "2025",
-    format: "Mood-driven Edit",
-    note: "Minimal setting, close observation, and emotional interiority through cuts.",
-  },
-];
-
-export const visualNarratives: ReelEntry[] = [
-  {
-    title: "10 Shot by Aryan Kumar",
-    platform: "Drive Archive",
-    url: "https://drive.google.com/drive/folders/1_R5qxLDb6EsGtacfbZHdxo3qvjZACGtT?usp=drive_link",
-    format: "Shot Exercise",
-    caption:
-      "A warm, tension-led study in close framing, shadow carving, and controlled movement.",
-    highlight: "Shot design / low-key lighting / visual tension",
+    role: "Direction / Camera",
+    sourceLabel: "Motion Study",
     thumbnail: {
       src: "/media/reels/ten-shot-01.jpg",
-      alt: "Preview frame from 10 Shot by Aryan Kumar",
+      alt: "Preview still from 10 Shot by Aryan Kumar",
       type: "image",
       orientation: "landscape",
       width: 1920,
       height: 1080,
     },
-    preview: {
+    media: {
       src: "/media/reels/ten-shot-preview.mp4",
-      alt: "Loop preview from 10 Shot by Aryan Kumar",
+      alt: "Motion clip from 10 Shot by Aryan Kumar",
       type: "video",
       orientation: "landscape",
       width: 640,
       height: 360,
       poster: "/media/reels/ten-shot-01.jpg",
+      previewSrc: "/media/reels/ten-shot-preview.mp4",
     },
   },
   {
+    id: "intellectual-montage",
     title: "Intellectual Montage",
-    platform: "Drive Archive",
-    url: "https://drive.google.com/drive/folders/1_R5qxLDb6EsGtacfbZHdxo3qvjZACGtT?usp=drive_link",
-    format: "Montage Study",
-    caption:
-      "A rooftop night sequence shaped around atmosphere, urban glow, and reflective pause.",
-    highlight: "Montage rhythm / city texture / contemplative pacing",
+    kind: "clip",
+    year: "2025",
+    role: "Direction / Edit",
+    sourceLabel: "Montage Study",
     thumbnail: {
       src: "/media/reels/intellectual-02.jpg",
-      alt: "Preview frame from Intellectual Montage",
+      alt: "Night frame from Intellectual Montage",
       type: "image",
       orientation: "landscape",
       width: 1920,
       height: 1080,
     },
-    preview: {
+    media: {
       src: "/media/reels/intellectual-preview.mp4",
-      alt: "Loop preview from Intellectual Montage",
+      alt: "Motion clip from Intellectual Montage",
       type: "video",
       orientation: "landscape",
       width: 640,
       height: 360,
       poster: "/media/reels/intellectual-02.jpg",
+      previewSrc: "/media/reels/intellectual-preview.mp4",
     },
   },
   {
+    id: "montage",
     title: "Montage",
-    platform: "Drive Archive",
-    url: "https://drive.google.com/drive/folders/1_R5qxLDb6EsGtacfbZHdxo3qvjZACGtT?usp=drive_link",
-    format: "Mood Exercise",
-    caption:
-      "An intimate room-based edit where the rhythm comes from silence, routine, and emotional pressure.",
-    highlight: "Interior mood / detail cutaways / emotional rhythm",
+    kind: "clip",
+    year: "2025",
+    role: "Edit / Rhythm",
+    sourceLabel: "Mood Exercise",
     thumbnail: {
       src: "/media/reels/montage-02.jpg",
-      alt: "Preview frame from Montage",
+      alt: "Interior still from Montage",
       type: "image",
       orientation: "landscape",
       width: 1920,
       height: 1080,
     },
-    preview: {
+    media: {
       src: "/media/reels/montage-preview.mp4",
-      alt: "Loop preview from Montage",
+      alt: "Motion clip from Montage",
       type: "video",
       orientation: "landscape",
       width: 640,
       height: 360,
       poster: "/media/reels/montage-02.jpg",
+      previewSrc: "/media/reels/montage-preview.mp4",
     },
   },
-];
-
-export const photographySeries: PhotoEntry[] = [
   {
+    id: "editorial-01",
     title: "Editorial Portrait 01",
-    caption: "Sharp tailoring, controlled expression, and clean window-shaped falloff.",
-    asset: {
+    kind: "photo",
+    year: "2025",
+    role: "Photography",
+    sourceLabel: "Portrait Study",
+    thumbnail: {
+      src: "/media/photography/editorial-01.jpg",
+      alt: "Editorial portrait photographed by Aryan Kumar",
+      type: "image",
+      orientation: "portrait",
+      width: 1280,
+      height: 1706,
+    },
+    media: {
       src: "/media/photography/editorial-01.jpg",
       alt: "Editorial portrait photographed by Aryan Kumar",
       type: "image",
@@ -209,9 +150,21 @@ export const photographySeries: PhotoEntry[] = [
     },
   },
   {
+    id: "editorial-02",
     title: "Editorial Portrait 02",
-    caption: "A quieter pose with direct eye-line and sculpted negative space.",
-    asset: {
+    kind: "photo",
+    year: "2025",
+    role: "Photography",
+    sourceLabel: "Portrait Study",
+    thumbnail: {
+      src: "/media/photography/editorial-02.jpg",
+      alt: "Studio portrait with blazer draped over a chair",
+      type: "image",
+      orientation: "portrait",
+      width: 1280,
+      height: 1706,
+    },
+    media: {
       src: "/media/photography/editorial-02.jpg",
       alt: "Studio portrait with blazer draped over a chair",
       type: "image",
@@ -220,10 +173,31 @@ export const photographySeries: PhotoEntry[] = [
       height: 1706,
     },
   },
+];
+
+export const motionClips: PortfolioEntry[] = selectedWorks.filter(
+  (entry) => entry.kind === "clip"
+);
+
+export const stills: PortfolioEntry[] = [
+  selectedWorks[4],
+  selectedWorks[5],
   {
+    id: "editorial-03",
     title: "Portrait Study 03",
-    caption: "The frame softens into observation rather than performance.",
-    asset: {
+    kind: "photo",
+    year: "2025",
+    role: "Photography",
+    sourceLabel: "Portrait Study",
+    thumbnail: {
+      src: "/media/photography/editorial-03.jpg",
+      alt: "Portrait study photographed by Aryan Kumar",
+      type: "image",
+      orientation: "portrait",
+      width: 1280,
+      height: 1706,
+    },
+    media: {
       src: "/media/photography/editorial-03.jpg",
       alt: "Portrait study photographed by Aryan Kumar",
       type: "image",
@@ -233,9 +207,21 @@ export const photographySeries: PhotoEntry[] = [
     },
   },
   {
+    id: "editorial-04",
     title: "Portrait Study 04",
-    caption: "A candid smile shifts the energy from formal to personal.",
-    asset: {
+    kind: "photo",
+    year: "2025",
+    role: "Photography",
+    sourceLabel: "Portrait Study",
+    thumbnail: {
+      src: "/media/photography/editorial-04.jpg",
+      alt: "Relaxed portrait with a chair foreground",
+      type: "image",
+      orientation: "portrait",
+      width: 1280,
+      height: 1706,
+    },
+    media: {
       src: "/media/photography/editorial-04.jpg",
       alt: "Relaxed portrait with a chair foreground",
       type: "image",
@@ -245,9 +231,21 @@ export const photographySeries: PhotoEntry[] = [
     },
   },
   {
+    id: "editorial-05",
     title: "Portrait Study 05",
-    caption: "Simple wardrobe, clean wall, and a focus on character through posture.",
-    asset: {
+    kind: "photo",
+    year: "2025",
+    role: "Photography",
+    sourceLabel: "Portrait Study",
+    thumbnail: {
+      src: "/media/photography/editorial-05.jpg",
+      alt: "Portrait with folded arms and soft side light",
+      type: "image",
+      orientation: "portrait",
+      width: 1280,
+      height: 1706,
+    },
+    media: {
       src: "/media/photography/editorial-05.jpg",
       alt: "Portrait with folded arms and soft side light",
       type: "image",
@@ -258,72 +256,22 @@ export const photographySeries: PhotoEntry[] = [
   },
 ];
 
-export const services: ServiceEntry[] = [
-  {
-    title: "Direction",
-    description:
-      "Narrative instinct shaped by mood, internal conflict, and emotionally focused staging.",
+export const about: AboutBlock = {
+  statement:
+    "Aryan Kumar is a first-year cinema student at AAFT Delhi, building a practice around image-making, mood, editing rhythm, and minimal setups.",
+  education:
+    "Asian Academy of Film & Television, Bachelors in Cinema (2028) / Diploma in Mass Communication & Journalism, Uttaranchal University (2025)",
+  experience: [
+    {
+      title: "Lead Photographer / UU Fest",
+      meta: "2025",
     },
-  {
-    title: "Cinematography",
-    description:
-      "Frames built around light contrast, tactile detail, and quiet atmospheric control.",
-  },
-  {
-    title: "Editing",
-    description:
-      "Cuts that privilege rhythm, tension, and visual continuity over excess.",
-  },
-  {
-    title: "Writing",
-    description:
-      "Story ideas rooted in observation, minimal spaces, and psychological weight.",
-  },
-];
-
-export const bio: BioBlock[] = [
-  {
-    title: "Profile",
-    copy:
-      "Aryan Kumar is a filmmaker and cinematography student with a strong interest in visual storytelling, short-form narratives, and emotionally charged image-making. His work often leans on limited locations, minimal setups, and carefully built atmosphere.",
-  },
-  {
-    title: "Approach",
-    copy:
-      "He is especially drawn to low-light imagery, handheld and static framing, shot composition, and detail-based storytelling through hands, objects, textures, and silence. The goal is not just to capture scenes, but to make images feel psychologically alive.",
-  },
-];
-
-export const pressOrExperience = [
-  {
-    eyebrow: "Experience",
-    title: "Lead Photographer / UU Fest",
-    meta: "May 2025",
-    copy:
-      "Covered a 3-day college fest through cultural performances, guest interactions, student activity, and behind-the-scenes moments while collaborating with reporters and production teams for university-wide broadcast coverage.",
-  },
-  {
-    eyebrow: "Experience",
-    title: "Lead Cameraperson / Times Of Uttaranchal",
-    meta: "Sep 2024 - Jun 2025",
-    copy:
-      "Operated cameras for daily recordings and vox-pop segments, worked with anchors and technical crew, and handled framing, studio lighting, and footage prep for broadcast and online publishing.",
-  },
-  {
-    eyebrow: "Education",
-    title: "Bachelors in Cinema",
-    meta: "Asian Academy of Film & Television / 2028",
-    copy:
-      "Currently building a foundation in film language, cinematography, and collaborative production through hands-on academic practice.",
-  },
-  {
-    eyebrow: "Education",
-    title: "Diploma in Mass Communication & Journalism",
-    meta: "Uttaranchal University / 2025",
-    copy:
-      "A parallel grounding in communication and media sharpened his ability to observe, report, and translate moments into visual stories.",
-  },
-];
+    {
+      title: "Lead Cameraperson / Times Of Uttaranchal",
+      meta: "2024 - 2025",
+    },
+  ],
+};
 
 export const contact = {
   email: "aryannkumar29@gmail.com",

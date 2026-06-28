@@ -8,6 +8,7 @@ type MediaModalProps = {
   children: React.ReactNode;
   open: boolean;
   title: string;
+  meta?: string;
   onClose: () => void;
 };
 
@@ -15,6 +16,7 @@ export function MediaModal({
   children,
   open,
   title,
+  meta,
   onClose,
 }: MediaModalProps) {
   useEffect(() => {
@@ -41,26 +43,35 @@ export function MediaModal({
     <AnimatePresence>
       {open ? (
         <motion.div
-          className="fixed inset-0 z-[120] bg-black/88 px-4 py-6 backdrop-blur-xl"
+          className="fixed inset-0 z-[120] bg-[#f2ede4]/96 px-4 py-4 backdrop-blur-md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
         >
           <motion.div
-            className="container-shell panel relative max-h-[calc(100vh-3rem)] overflow-auto rounded-[2rem] border-white/10 p-4 md:p-6"
-            initial={{ opacity: 0, y: 24, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 24, scale: 0.98 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="container-shell relative max-h-[calc(100vh-2rem)] overflow-auto rounded-[2rem] border border-black/10 bg-[#faf6ef] p-4 md:p-6"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 18 }}
+            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="mb-5 flex items-center justify-between gap-4">
-              <h3 className="font-display text-4xl text-paper">{title}</h3>
+            <div className="mb-5 flex items-start justify-between gap-4">
+              <div>
+                <h3 className="font-display text-4xl leading-none text-black">
+                  {title}
+                </h3>
+                {meta ? (
+                  <p className="mt-2 text-[0.72rem] uppercase tracking-[0.22em] text-black/45">
+                    {meta}
+                  </p>
+                ) : null}
+              </div>
               <button
                 type="button"
                 onClick={onClose}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 transition hover:border-white/30"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 text-black transition hover:border-black/25"
                 aria-label="Close modal"
               >
                 <X className="h-5 w-5" />

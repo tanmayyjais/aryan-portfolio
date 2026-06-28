@@ -1,52 +1,52 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 
 import "./globals.css";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["400", "500", "600", "700"]
+  weight: ["400", "500", "600", "700"],
 });
 
-const body = Inter({
+const body = Manrope({
   subsets: ["latin"],
-  variable: "--font-body"
+  variable: "--font-body",
 });
 
 export const metadata: Metadata = {
-  title: "Aryan Kumar | Filmmaker & Cinematographer",
+  title: "Aryan Kumar | Filmmaker, Cinematographer, Editor",
   description:
-    "A premium cinematography portfolio for Aryan Kumar, featuring Focal Void, visual narratives, editorial stills, and a growing auteur voice from AAFT Delhi.",
+    "A minimal editorial portfolio for Aryan Kumar featuring short films, motion studies, and portrait photography from AAFT Delhi.",
   keywords: [
     "Aryan Kumar",
     "cinematography portfolio",
     "filmmaker portfolio",
     "AAFT Delhi",
     "student cinematographer",
-    "Focal Void",
-    "DRYSHTIKAAR"
+    "portrait photography",
+    "DRYSHTIKAAR",
   ],
   openGraph: {
-    title: "Aryan Kumar | Filmmaker & Cinematographer",
+    title: "Aryan Kumar | Filmmaker, Cinematographer, Editor",
     description:
-      "Focal Void, curated visual narratives, and editorial stills presented through a premium film-microsite experience.",
+      "Short films, motion studies, and portrait photography presented through a minimal editorial portfolio.",
     type: "website",
     url: "https://aryannkumar.vercel.app/",
     images: [
       {
-        url: "/media/hero/hero-still-alt.jpg",
-        width: 1920,
-        height: 1080,
-        alt: "Focal Void hero still for Aryan Kumar portfolio",
+        url: "/media/photography/editorial-01.jpg",
+        width: 1280,
+        height: 1706,
+        alt: "Editorial portrait from Aryan Kumar's portfolio",
       },
     ],
   },
-  metadataBase: new URL("https://aryannkumar.vercel.app")
+  metadataBase: new URL("https://aryannkumar.vercel.app"),
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
