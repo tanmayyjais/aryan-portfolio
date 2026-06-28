@@ -7,21 +7,39 @@ type RevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
+  variant?: "fade" | "wipe";
 } & MotionProps;
+
+const VARIANTS = {
+  fade: {
+    hidden: { opacity: 0, y: 28 },
+    visible: { opacity: 1, y: 0 },
+  },
+  wipe: {
+    hidden: { clipPath: "inset(0 100% 0 0)", opacity: 0 },
+    visible: { clipPath: "inset(0 0% 0 0)", opacity: 1 },
+  },
+};
 
 export function Reveal({
   children,
   className,
   delay = 0,
+  variant = "fade",
   ...props
 }: RevealProps) {
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      variants={VARIANTS[variant]}
+      transition={{
+        duration: 0.75,
+        ease: [0.43, 0.13, 0.23, 0.96],
+        delay,
+      }}
       {...props}
     >
       {children}

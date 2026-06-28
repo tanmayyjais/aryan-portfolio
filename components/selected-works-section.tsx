@@ -1,253 +1,220 @@
 "use client";
 
-import { Play, Film, Calendar, Clapperboard, Monitor, Sparkles } from "lucide-react";
-import Image from "next/image";
 import { useState } from "react";
-import { MediaModal } from "@/components/media-modal";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Play, Film, Clapperboard, ExternalLink } from "lucide-react";
+import YouTube from "react-youtube";
 import { Reveal } from "@/components/reveal";
-import { selectedWorks } from "@/lib/site-data";
-import type { PortfolioEntry } from "@/lib/types";
 
-// Combine Focal Void with an upcoming film placeholder matching Slide 2 "Short Film" boxes
-const shortFilms: PortfolioEntry[] = [
-  ...selectedWorks.filter((item) => item.kind === "film"),
+const FILMS = [
   {
-    id: "aural-delusions",
-    title: "Aural Delusions",
-    kind: "film",
-    year: "2026 (Upcoming)",
-    role: "Director / Cinematographer",
-    sourceLabel: "In Post-Production",
-    thumbnail: {
-      src: "/media/hero/hero-still-alt.jpg",
-      alt: "Upcoming film mood shot",
-      type: "image",
-      orientation: "landscape",
-      width: 1920,
-      height: 1080,
-    },
-    media: {
-      src: "/media/hero/hero-still-alt.jpg",
-      alt: "Upcoming film mood shot",
-      type: "image",
-      orientation: "landscape",
-      width: 1920,
-      height: 1080,
-    },
-    synopsis: "An atmospheric exploration of sensory isolation and auditory hallucinations in high-density urban environments. Shot entirely in low-light and neon spaces around Delhi NCR.",
+    id: "focal-void",
+    youtubeId: "28RcRST1YJM",
+    title: "Focal Void",
+    genre: "Psychological Drama",
+    role: "Director · Cinematographer · Editor",
+    year: "2026",
+    runtime: "~8 min",
+    thumbnail: "/media/films/focal-void/still-02.jpg",
+    synopsis: "A psychological study of isolation and visual tension. Told in high-contrast frames where stillness speaks louder than movement — exploring the thin line between perception and reality.",
     credits: [
-      { label: "Writer & Director", value: "Aryan Kumar" },
-      { label: "Cinematographer", value: "Aryan Kumar" },
-      { label: "Sound Designer", value: "AAFT Collaborators" },
+      { label: "Written & Directed by", value: "Aryan Kumar" },
+      { label: "Cinematography", value: "Aryan Kumar" },
+      { label: "Editing", value: "Aryan Kumar" },
+      { label: "Production", value: "AAFT Noida" },
     ],
-    specs: "Sony A7S III • Cine Prime Lenses • Ultra-Low Light Setup",
+    camera: "Sony Mirrorless · 24mm Prime · DaVinci Resolve",
+  },
+  {
+    id: "film-2",
+    youtubeId: "POCzq-AF2Ig",
+    title: "Visual Study II",
+    genre: "Experimental Short",
+    role: "Cinematographer · Director",
+    year: "2025",
+    runtime: "~5 min",
+    thumbnail: "/media/films/focal-void/still-03.jpg",
+    synopsis: "An experimental exploration of spatial depth and color temperature. Frames built to feel like photographs that breathe — each shot a meditation on time standing still.",
+    credits: [
+      { label: "Direction & Camera", value: "Aryan Kumar" },
+      { label: "Color Grading", value: "Aryan Kumar" },
+    ],
+    camera: "Sony Mirrorless · 50mm f/1.8 · 4K 24fps",
   },
 ];
 
-export function SelectedWorksSection() {
-  const [activeFilm, setActiveFilm] = useState<PortfolioEntry | null>(null);
-
-  // Parse youtube video id from links
-  const getYouTubeEmbedUrl = (url?: string) => {
-    if (!url) return null;
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    const match = url.match(regExp);
-    return match && match[2].length === 11
-      ? `https://www.youtube.com/embed/${match[2]}?autoplay=1&rel=0`
-      : null;
-  };
+function FilmCard({ film }: { film: typeof FILMS[0] }) {
+  const [playing, setPlaying] = useState(false);
 
   return (
-    <section id="selected-works" className="section-space bg-black/60 border-b border-[#ece9e2]/8">
-      <div className="container-shell space-y-12">
-        <div className="section-label-row">
-          <div className="space-y-1">
-            <span className="text-[0.62rem] uppercase tracking-[0.25em] text-[#b58557] font-semibold">
-              Narrative Work
-            </span>
-            <h2 className="font-display text-4xl text-[#ece9e2] tracking-tight">
-              Short Films
-            </h2>
-          </div>
-          <p className="section-note">Slide 01 • Dynamic Frames</p>
+    <Reveal>
+      <div className="group relative overflow-hidden rounded-2xl border border-[#f5f0e8]/07 bg-[#0d0d0d]">
+        {/* Thumbnail / Player area */}
+        <div className="relative aspect-[16/9] overflow-hidden">
+          <AnimatePresence>
+            {!playing ? (
+              <motion.div
+                key="thumb"
+                className="absolute inset-0 cursor-none"
+                exit={{ opacity: 0 }}
+                data-cursor="hover"
+              >
+                {/* Thumbnail with hover zoom */}
+                <motion.div
+                  className="absolute inset-0"
+                  whileHover={{ scale: 1.04 }}
+                  transition={{ duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96] }}
+                >
+                  <Image
+                    src={film.thumbnail}
+                    alt={film.title}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover brightness-60 contrast-110"
+                  />
+                </motion.div>
+
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                {/* Play button */}
+                <button
+                  type="button"
+                  onClick={() => setPlaying(true)}
+                  className="absolute inset-0 flex items-center justify-center group/play cursor-none"
+                  data-cursor="hover"
+                  aria-label={`Play ${film.title}`}
+                >
+                  <motion.div
+                    className="flex h-16 w-16 items-center justify-center rounded-full bg-[#c9a96e] text-[#0a0a0a] shadow-[0_0_60px_rgba(201,169,110,0.5)] transition-all duration-300 group-hover/play:scale-110 group-hover/play:bg-[#dab87e]"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Play className="h-6 w-6 fill-current ml-1" />
+                  </motion.div>
+                </button>
+
+                {/* Film info overlay */}
+                <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
+                  <div>
+                    <span className="eyebrow text-[0.58rem] text-[#c9a96e]">{film.genre}</span>
+                    <h3 className="font-display text-2xl text-[#f5f0e8] mt-0.5">{film.title}</h3>
+                  </div>
+                  <span className="font-mono text-[0.6rem] text-[#f5f0e8]/40 tracking-wider border border-[#f5f0e8]/10 px-2 py-0.5 rounded">
+                    {film.year}
+                  </span>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div key="player" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="absolute inset-0 bg-black">
+                <YouTube
+                  videoId={film.youtubeId}
+                  className="w-full h-full"
+                  iframeClassName="w-full h-full"
+                  opts={{
+                    width: "100%",
+                    height: "100%",
+                    playerVars: { autoplay: 1, rel: 0, modestbranding: 1, color: "white" },
+                  }}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        {/* Short Film Widescreen Grid (2 boxes from sketch) */}
-        <div className="grid gap-12 lg:grid-cols-2">
-          {shortFilms.map((film, index) => (
-            <Reveal key={film.id} delay={index * 0.1}>
-              <button
-                type="button"
-                onClick={() => setActiveFilm(film)}
-                className="group w-full text-left focus:outline-none cursor-none"
-                data-cursor="play"
+        {/* Detail panel */}
+        <div className="p-6 grid gap-6 md:grid-cols-[1fr_auto]">
+          <div className="space-y-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <Clapperboard className="h-3.5 w-3.5 text-[#c9a96e]" />
+                <span className="font-mono text-[0.62rem] tracking-[0.2em] uppercase text-[#c9a96e]">
+                  {film.role}
+                </span>
+              </div>
+              <p className="font-body text-sm leading-7 text-[#f5f0e8]/60 max-w-lg">
+                {film.synopsis}
+              </p>
+            </div>
+
+            {/* Credits */}
+            <div className="grid grid-cols-2 gap-x-6 gap-y-1.5">
+              {film.credits.map((c) => (
+                <div key={c.label} className="text-xs">
+                  <span className="text-[#f5f0e8]/35 uppercase tracking-wider">{c.label}</span>
+                  <p className="text-[#f5f0e8]/80 font-medium mt-0.5">{c.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3 items-start md:items-end justify-between">
+            <div className="text-right space-y-1">
+              <div className="flex items-center gap-1.5 justify-end">
+                <Film className="h-3 w-3 text-[#c9a96e]" />
+                <span className="font-mono text-[0.58rem] text-[#f5f0e8]/35 tracking-wider">{film.runtime}</span>
+              </div>
+              <p className="font-mono text-[0.58rem] text-[#f5f0e8]/30">{film.camera}</p>
+            </div>
+
+            <div className="flex gap-3">
+              {!playing && (
+                <button
+                  type="button"
+                  onClick={() => setPlaying(true)}
+                  className="btn btn-gold text-[0.65rem] px-4 py-2 cursor-none"
+                  data-cursor="hover"
+                >
+                  <Play className="h-3 w-3 fill-current" />
+                  Watch Film
+                </button>
+              )}
+              <a
+                href={`https://youtu.be/${film.youtubeId}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn text-[0.65rem] px-4 py-2 cursor-none"
+                data-cursor="hover"
               >
-                {/* Widescreen Film Card Frame */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-[#ece9e2]/10 bg-[#0d0d0d] transition duration-500 group-hover:border-[#b58557]/40 shadow-2xl">
-                  <Image
-                    src={film.thumbnail.src}
-                    alt={film.thumbnail.alt}
-                    fill
-                    sizes="(min-width: 1024px) 45vw, 100vw"
-                    className="object-cover object-center transition duration-[1500ms] ease-out group-hover:scale-[1.03] group-hover:brightness-95"
-                  />
-                  
-                  {/* Subtle cinema scope grid */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/30" />
+                <ExternalLink className="h-3 w-3" />
+                YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
 
-                  {/* Play badge / Status badge */}
-                  {film.id !== "aural-delusions" ? (
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-14 w-14 items-center justify-center rounded-full bg-[#b58557] text-white shadow-xl transition-all duration-300 group-hover:bg-[#ece9e2] group-hover:text-black group-hover:scale-110">
-                      <Play className="ml-1 h-5 w-5 fill-current" />
-                    </div>
-                  ) : (
-                    <div className="absolute right-4 top-4 px-3 py-1 rounded-full bg-black/60 border border-[#ece9e2]/15 text-[0.62rem] uppercase tracking-[0.2em] text-[#b58557] flex items-center gap-1.5 backdrop-blur-md">
-                      <Sparkles className="h-3 w-3 animate-pulse" />
-                      In Production
-                    </div>
-                  )}
+export function SelectedWorksSection() {
+  return (
+    <section id="featured-work" className="section-pad bg-[#070707] border-b border-[#f5f0e8]/06">
+      <div className="shell space-y-12">
+        <div className="label-row">
+          <div className="space-y-2">
+            <span className="eyebrow">Featured Films</span>
+            <h2 className="section-title">Short Films</h2>
+          </div>
+          <a
+            href="https://www.youtube.com/@aaryannnk"
+            target="_blank"
+            rel="noreferrer"
+            className="btn hidden sm:inline-flex cursor-none"
+            data-cursor="hover"
+          >
+            <ExternalLink className="h-3.5 w-3.5" />
+            YouTube Channel
+          </a>
+        </div>
 
-                  {/* Info Overlay at the bottom */}
-                  <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
-                    <div className="space-y-1">
-                      <p className="text-[0.62rem] uppercase tracking-[0.24em] text-[#b58557] font-semibold">
-                        {film.sourceLabel}
-                      </p>
-                      <h3 className="font-display text-2xl text-[#ece9e2]">
-                        {film.title}
-                      </h3>
-                    </div>
-                    <span className="text-[0.65rem] font-mono tracking-wider text-[#ece9e2]/40 bg-black/40 px-2 py-0.5 rounded border border-[#ece9e2]/5">
-                      {film.year}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Technical Meta under the card */}
-                <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs text-[#ece9e2]/50">
-                  <span className="flex items-center gap-1.5">
-                    <Clapperboard className="h-3.5 w-3.5 text-[#b58557]" />
-                    Role: {film.role}
-                  </span>
-                  {film.specs && (
-                    <span className="flex items-center gap-1.5 border-l border-[#ece9e2]/10 pl-6">
-                      <Monitor className="h-3.5 w-3.5 text-[#b58557]" />
-                      {film.specs}
-                    </span>
-                  )}
-                </div>
-              </button>
-            </Reveal>
+        <div className="grid gap-12">
+          {FILMS.map((film) => (
+            <FilmCard key={film.id} film={film} />
           ))}
         </div>
       </div>
-
-      {/* Theatre Modal */}
-      <MediaModal
-        open={Boolean(activeFilm)}
-        title={activeFilm?.title ?? ""}
-        meta={activeFilm ? `${activeFilm.sourceLabel} • ${activeFilm.year}` : ""}
-        onClose={() => setActiveFilm(null)}
-      >
-        {activeFilm && (
-          <div className="grid gap-8 lg:grid-cols-[1.7fr_0.9fr] lg:items-start pt-2">
-            {/* Media Box */}
-            <div className="space-y-4">
-              <div className="modal-media-frame aspect-[16/9] relative overflow-hidden shadow-inner bg-black">
-                {activeFilm.id !== "aural-delusions" && getYouTubeEmbedUrl(activeFilm.href) ? (
-                  <iframe
-                    className="absolute inset-0 w-full h-full border-none"
-                    src={getYouTubeEmbedUrl(activeFilm.href) || ""}
-                    title={activeFilm.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  />
-                ) : (
-                  // Mood teaser still
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={activeFilm.media.src}
-                      alt={activeFilm.media.alt}
-                      fill
-                      className="object-cover object-center brightness-75 contrast-105"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                      <div className="text-center p-4">
-                        <Film className="h-10 w-10 text-[#b58557] mx-auto mb-2 animate-pulse" />
-                        <p className="text-xs uppercase tracking-[0.25em] text-[#ece9e2]">
-                          Teaser Trailer Coming Soon
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {activeFilm.href && (
-                <div className="flex justify-between items-center bg-white/[0.02] border border-[#ece9e2]/5 rounded-xl p-4">
-                  <div>
-                    <h4 className="text-xs uppercase tracking-[0.2em] text-[#b58557]">External Link</h4>
-                    <p className="text-xs text-[#ece9e2]/50 mt-1">Watch directly on YouTube</p>
-                  </div>
-                  <a
-                    href={activeFilm.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="minimal-button cursor-none text-[0.68rem] px-4 py-2 border-[#b58557]/30 hover:border-[#b58557]"
-                    data-cursor="link"
-                  >
-                    Open YouTube
-                  </a>
-                </div>
-              )}
-            </div>
-
-            {/* Details Panel */}
-            <div className="space-y-6">
-              <div className="space-y-2 border-b border-[#ece9e2]/8 pb-4">
-                <span className="text-[0.62rem] uppercase tracking-[0.22em] text-[#b58557] font-semibold flex items-center gap-1.5">
-                  <Film className="h-3 w-3" />
-                  Synopsis
-                </span>
-                <p className="text-sm leading-relaxed text-[#ece9e2]/70">
-                  {activeFilm.synopsis}
-                </p>
-              </div>
-
-              {/* Credits List */}
-              {activeFilm.credits && (
-                <div className="space-y-3 border-b border-[#ece9e2]/8 pb-4">
-                  <span className="text-[0.62rem] uppercase tracking-[0.22em] text-[#b58557] font-semibold flex items-center gap-1.5">
-                    <Clapperboard className="h-3 w-3" />
-                    Credits
-                  </span>
-                  <div className="grid gap-2 text-xs">
-                    {activeFilm.credits.map((credit) => (
-                      <div key={credit.label} className="flex justify-between border-b border-[#ece9e2]/5 py-1">
-                        <span className="text-[#ece9e2]/40 uppercase tracking-[0.1em]">{credit.label}</span>
-                        <span className="text-[#ece9e2]/90 font-medium">{credit.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Technical specifications */}
-              {activeFilm.specs && (
-                <div className="space-y-2">
-                  <span className="text-[0.62rem] uppercase tracking-[0.22em] text-[#b58557] font-semibold flex items-center gap-1.5">
-                    <Calendar className="h-3 w-3" />
-                    Specifications
-                  </span>
-                  <p className="text-xs font-mono text-[#ece9e2]/50">
-                    {activeFilm.specs}
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-      </MediaModal>
     </section>
   );
 }

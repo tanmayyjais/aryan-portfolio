@@ -1,144 +1,146 @@
 "use client";
 
-import { Send, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
+import { Send, CheckCircle2, Mail, Instagram, Youtube, Linkedin } from "lucide-react";
 import { Reveal } from "@/components/reveal";
-import { socialLinks } from "@/lib/site-data";
+import { contact } from "@/lib/site-data";
+
+const PROJECT_TYPES = [
+  "Short Film", "Music Video", "Documentary", "Photography Session",
+  "Commercial / Ad", "Personal Project", "Collaboration", "Other",
+];
+
+const SOCIALS = [
+  { icon: Mail, label: "Email", href: `mailto:${contact.email}`, value: contact.email },
+  { icon: Instagram, label: "Instagram", href: contact.instagram, value: "@drishtiikaar" },
+  { icon: Youtube, label: "YouTube", href: contact.youtube, value: "DRISHTIIKAAR" },
+  { icon: Linkedin, label: "LinkedIn", href: contact.linkedin, value: "aryannkumar" },
+];
 
 export function ContactSection() {
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", message: "", projectType: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate sending email inquiry
-    if (formData.name && formData.email && formData.message) {
-      setFormSubmitted(true);
-      setTimeout(() => {
-        setFormSubmitted(false);
-        setFormData({ name: "", email: "", message: "" });
-      }, 5000);
+    if (form.name && form.email && form.message) {
+      setSent(true);
+      setTimeout(() => { setSent(false); setForm({ name: "", email: "", message: "", projectType: "" }); }, 6000);
     }
   };
 
   return (
-    <section id="contact" className="section-space bg-[#060606] pt-12 md:pt-16 pb-12">
-      <div className="container-shell border-t border-[#ece9e2]/8 pt-16">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          {/* Typographic Title and Social Handles */}
-          <div className="space-y-8">
-            <Reveal className="space-y-4">
-              <span className="text-[0.62rem] uppercase tracking-[0.25em] text-[#b58557] font-semibold block">
-                Get In Touch
-              </span>
-              <h2 className="font-display text-[2.6rem] leading-[0.98] tracking-[-0.035em] text-[#ece9e2] md:text-[3.8rem] lg:text-[4.5rem]">
-                Let&apos;s create stories worth remembering.
-              </h2>
-            </Reveal>
+    <section id="contact" className="relative section-pad overflow-hidden bg-[#070707]">
+      {/* Dramatic background image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/media/photography/editorial-05.jpg"
+          alt="Contact background"
+          fill
+          sizes="100vw"
+          className="object-cover brightness-[0.12] contrast-110 saturate-0"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/85 to-[#070707]/50" />
+      </div>
 
-            {/* Social Grid */}
-            <div className="grid gap-4 sm:grid-cols-2 pt-4">
-              {socialLinks.map((link) => (
-                <Reveal key={link.label}>
-                  <a
-                    href={link.href}
-                    target={link.href.startsWith("http") ? "_blank" : undefined}
-                    rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                    className="contact-link group block w-full cursor-none"
-                    data-cursor="link"
-                  >
-                    <span className="text-[0.62rem] uppercase tracking-[0.22em] text-[#ece9e2]/40 group-hover:text-[#b58557] transition">
-                      {link.label}
-                    </span>
-                    <span className="mt-2 flex items-center justify-between font-display text-[1.45rem] leading-none text-[#ece9e2] group-hover:text-white transition">
-                      {link.value}
-                      <ArrowUpRight className="h-4 w-4 text-[#ece9e2]/20 transition duration-300 group-hover:text-[#b58557] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </span>
-                  </a>
-                </Reveal>
+      <div className="relative z-10 shell">
+        {/* Header */}
+        <Reveal className="text-center space-y-4 mb-14">
+          <span className="eyebrow">Let&apos;s Connect</span>
+          <h2 className="font-display font-black text-[#f5f0e8] leading-tight"
+            style={{ fontSize: "clamp(2.4rem, 6vw, 5rem)" }}
+          >
+            Every great film starts<br />
+            <span className="text-[#c9a96e]">with a conversation.</span>
+          </h2>
+        </Reveal>
+
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] items-start">
+          {/* Social links */}
+          <Reveal className="space-y-8">
+            <div className="space-y-4">
+              {SOCIALS.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel={s.href.startsWith("http") ? "noreferrer" : undefined}
+                  className="group flex items-center gap-4 border-b border-[#f5f0e8]/07 pb-4 hover:border-[#c9a96e]/40 transition-all duration-300 cursor-none"
+                  data-cursor="hover"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#f5f0e8]/10 text-[#f5f0e8]/40 group-hover:border-[#c9a96e]/40 group-hover:text-[#c9a96e] transition-all duration-300 flex-shrink-0">
+                    <s.icon className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <span className="font-mono text-[0.58rem] tracking-[0.2em] uppercase text-[#f5f0e8]/35 group-hover:text-[#c9a96e]/70 transition block">{s.label}</span>
+                    <span className="font-body text-[#f5f0e8]/70 group-hover:text-[#f5f0e8] transition text-sm font-medium">{s.value}</span>
+                  </div>
+                </a>
               ))}
             </div>
-          </div>
 
-          {/* Inquiry Form */}
-          <Reveal delay={0.15}>
-            <div className="bg-[#0b0b0b] border border-[#ece9e2]/5 rounded-[2rem] p-6 md:p-10 shadow-2xl relative overflow-hidden">
-              {/* Form State Handler */}
-              {formSubmitted ? (
-                <div className="flex flex-col items-center justify-center text-center py-16 space-y-4">
-                  <div className="h-16 w-16 rounded-full bg-[#b58557]/10 flex items-center justify-center border border-[#b58557]/20">
-                    <CheckCircle2 className="h-8 w-8 text-[#b58557] animate-bounce" />
+            <p className="font-body text-sm leading-7 text-[#f5f0e8]/40 max-w-sm">
+              Available for short films, music videos, photography sessions, and creative collaborations.
+              Based in Delhi NCR — open to remote projects.
+            </p>
+          </Reveal>
+
+          {/* Form */}
+          <Reveal delay={0.12}>
+            <div className="glass rounded-2xl p-8 md:p-10">
+              {sent ? (
+                <div className="flex flex-col items-center justify-center text-center py-14 space-y-4">
+                  <div className="h-16 w-16 rounded-full bg-[#c9a96e]/10 border border-[#c9a96e]/25 flex items-center justify-center">
+                    <CheckCircle2 className="h-8 w-8 text-[#c9a96e]" />
                   </div>
-                  <div className="space-y-1">
-                    <h4 className="font-display text-2xl text-[#ece9e2]">Transmission Received</h4>
-                    <p className="text-xs text-[#ece9e2]/50 max-w-xs mx-auto leading-relaxed">
-                      Thank you. Your message has been sent to Aryan. He will connect with you shortly.
+                  <div>
+                    <h4 className="font-display text-2xl text-[#f5f0e8]">Message Sent</h4>
+                    <p className="font-body text-sm text-[#f5f0e8]/45 mt-2 max-w-xs mx-auto leading-relaxed">
+                      Aryan will be in touch shortly. Thank you.
                     </p>
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-8">
+                <form onSubmit={handleSubmit} className="space-y-7">
                   <div className="space-y-1">
-                    <h3 className="font-display text-2xl text-[#ece9e2]">Direct Inquiry</h3>
-                    <p className="text-xs text-[#ece9e2]/45 font-mono">
-                      COLLABORATION • PROJECT COMMISSION • REEL FEEDBACK
+                    <h3 className="font-display text-2xl text-[#f5f0e8]">Send a Message</h3>
+                    <p className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-[#f5f0e8]/30">
+                      Collaboration · Commission · Inquiry
                     </p>
                   </div>
 
-                  <div className="space-y-6">
-                    {/* Name Input */}
-                    <div className="relative border-b border-[#ece9e2]/10 py-1.5 focus-within:border-[#b58557] transition duration-300">
-                      <label className="text-[0.62rem] uppercase tracking-[0.2em] text-[#ece9e2]/35 block mb-1 font-semibold">
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-transparent text-sm text-[#ece9e2] placeholder-[#ece9e2]/20 focus:outline-none py-1 cursor-none"
-                        placeholder="John Doe"
-                      />
+                  <div className="grid gap-7 sm:grid-cols-2">
+                    <div>
+                      <label className="font-mono text-[0.58rem] tracking-[0.2em] uppercase text-[#f5f0e8]/35 block mb-1">Name</label>
+                      <input type="text" required value={form.name} onChange={e => setForm({...form, name: e.target.value})}
+                        className="form-field" placeholder="Your name" data-cursor="hover" />
                     </div>
-
-                    {/* Email Input */}
-                    <div className="relative border-b border-[#ece9e2]/10 py-1.5 focus-within:border-[#b58557] transition duration-300">
-                      <label className="text-[0.62rem] uppercase tracking-[0.2em] text-[#ece9e2]/35 block mb-1 font-semibold">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-transparent text-sm text-[#ece9e2] placeholder-[#ece9e2]/20 focus:outline-none py-1 cursor-none"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-
-                    {/* Message Input */}
-                    <div className="relative border-b border-[#ece9e2]/10 py-1.5 focus-within:border-[#b58557] transition duration-300">
-                      <label className="text-[0.62rem] uppercase tracking-[0.2em] text-[#ece9e2]/35 block mb-1 font-semibold">
-                        Inquiry Details
-                      </label>
-                      <textarea
-                        rows={3}
-                        required
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full bg-transparent text-sm text-[#ece9e2] placeholder-[#ece9e2]/20 focus:outline-none py-1 resize-none cursor-none"
-                        placeholder="Describe your film project, commissions or timeline..."
-                      />
+                    <div>
+                      <label className="font-mono text-[0.58rem] tracking-[0.2em] uppercase text-[#f5f0e8]/35 block mb-1">Email</label>
+                      <input type="email" required value={form.email} onChange={e => setForm({...form, email: e.target.value})}
+                        className="form-field" placeholder="email@example.com" data-cursor="hover" />
                     </div>
                   </div>
 
-                  <button
-                    type="submit"
-                    className="w-full minimal-button minimal-button-solid cursor-none justify-center gap-2 group"
-                    data-cursor="link"
-                  >
+                  <div>
+                    <label className="font-mono text-[0.58rem] tracking-[0.2em] uppercase text-[#f5f0e8]/35 block mb-1">Project Type</label>
+                    <select value={form.projectType} onChange={e => setForm({...form, projectType: e.target.value})}
+                      className="form-field appearance-none" data-cursor="hover">
+                      <option value="" disabled>Select project type</option>
+                      {PROJECT_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="font-mono text-[0.58rem] tracking-[0.2em] uppercase text-[#f5f0e8]/35 block mb-1">Message</label>
+                    <textarea required rows={4} value={form.message} onChange={e => setForm({...form, message: e.target.value})}
+                      className="form-field resize-none" placeholder="Tell me about your project..." data-cursor="hover" />
+                  </div>
+
+                  <button type="submit" className="btn btn-gold w-full justify-center gap-2 group cursor-none" data-cursor="hover">
                     <span>Send Message</span>
-                    <Send className="h-3.5 w-3.5 transition group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+                    <Send className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
                   </button>
                 </form>
               )}

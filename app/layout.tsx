@@ -1,39 +1,45 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cinzel, DM_Sans, JetBrains_Mono } from "next/font/google";
 
 import "./globals.css";
 import { CinematicLoader } from "@/components/cinematic-loader";
 import { FilmGrain } from "@/components/film-grain";
-import { CursorSpotlight } from "@/components/cursor-spotlight";
+import { CinematicCursor } from "@/components/cursor-spotlight";
 
-const display = Cormorant_Garamond({
+const cinzel = Cinzel({
   subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-cinzel",
+  weight: ["400", "700", "900"],
+  display: "swap",
 });
 
-const body = Manrope({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-dm-sans",
+  weight: ["300", "400", "500", "600"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["300", "400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Aryan Kumar | Cinematographer, Filmmaker, Editor",
+  title: "Aryan Kumar | Cinematographer & Filmmaker",
   description:
-    "The official cinematography portfolio of Aryan Kumar, student at AAFT Delhi. Showcasing short films (Focal Void), composition motion studies, and editorial photography.",
+    "Official cinematography portfolio of Aryan Kumar — BSc Cinematography student at AAFT Noida. Short films, editorial photography, and visual storytelling.",
   keywords: [
-    "Aryan Kumar",
-    "cinematography portfolio",
-    "filmmaker portfolio",
-    "AAFT Delhi",
-    "student cinematographer",
-    "portrait photography",
-    "DRISHTIIKAAR",
+    "Aryan Kumar", "cinematographer", "filmmaker", "AAFT Noida",
+    "student cinematographer", "short film", "visual storytelling",
+    "DRISHTIIKAAR", "portrait photography", "cinematography portfolio",
   ],
   openGraph: {
-    title: "Aryan Kumar | Cinematographer, Filmmaker, Editor",
+    title: "Aryan Kumar | Cinematographer & Filmmaker",
     description:
-      "Showcasing short films, composition studies, and editorial photography through a high-end dark cinematic experience.",
+      "BSc Cinematography student at AAFT Noida. Short films, editorial photography, motion studies.",
     type: "website",
     url: "https://aryannkumar.vercel.app/",
     images: [
@@ -41,24 +47,26 @@ export const metadata: Metadata = {
         url: "/media/photography/editorial-01.jpg",
         width: 1280,
         height: 1706,
-        alt: "Editorial portrait photographed by Aryan Kumar",
+        alt: "Aryan Kumar — Cinematographer",
       },
     ],
   },
   metadataBase: new URL("https://aryannkumar.vercel.app"),
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
+    <html
+      lang="en"
+      className={`${cinzel.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
+    >
       <body className="antialiased">
         <CinematicLoader />
         <FilmGrain />
-        <CursorSpotlight />
+        <CinematicCursor />
         {children}
       </body>
     </html>

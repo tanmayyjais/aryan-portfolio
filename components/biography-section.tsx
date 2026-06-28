@@ -1,117 +1,150 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import { Reveal } from "@/components/reveal";
 import { about, contact } from "@/lib/site-data";
 
+// All available images for the filmstrip marquee
+const MARQUEE_IMAGES = [
+  "/media/photography/editorial-01.jpg",
+  "/media/reels/ten-shot-01.jpg",
+  "/media/photography/editorial-03.jpg",
+  "/media/reels/intellectual-01.jpg",
+  "/media/photography/editorial-05.jpg",
+  "/media/reels/montage-01.jpg",
+  "/media/photography/editorial-02.jpg",
+  "/media/reels/ten-shot-02.jpg",
+];
+
+const STATS = [
+  { value: 3, suffix: "+", label: "Short Films" },
+  { value: 200, suffix: "+", label: "Frames Shot" },
+  { value: 1, suffix: "", label: "Obsession" },
+];
+
+function AnimatedStat({ value, suffix, label }: { value: number; suffix: string; label: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true });
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    let start = 0;
+    const step = Math.ceil(value / 35);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= value) { setDisplay(value); clearInterval(timer); }
+      else setDisplay(start);
+    }, 28);
+    return () => clearInterval(timer);
+  }, [inView, value]);
+
+  return (
+    <div ref={ref} className="text-center">
+      <div className="stat-value">{display}{suffix}</div>
+      <p className="font-mono text-[0.64rem] tracking-[0.25em] uppercase text-[#f5f0e8]/45 mt-1">{label}</p>
+    </div>
+  );
+}
+
 export function BiographySection() {
   return (
-    <section id="about" className="section-space border-b border-[#ece9e2]/8 bg-[#0a0a0a]">
-      <div className="container-shell grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        {/* Typographic Timeline Column */}
-        <div className="space-y-10">
-          <Reveal className="space-y-6">
-            <div className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#b58557]" />
-              <p className="section-kicker">About Me</p>
+    <section id="about" className="relative overflow-hidden bg-[#0a0a0a] border-b border-[#f5f0e8]/06">
+      {/* Filmstrip Marquee BG */}
+      <div className="absolute inset-0 z-0 flex flex-col justify-center overflow-hidden opacity-[0.07] select-none pointer-events-none">
+        <div className="flex gap-4 marquee-track whitespace-nowrap">
+          {[...MARQUEE_IMAGES, ...MARQUEE_IMAGES, ...MARQUEE_IMAGES].map((src, i) => (
+            <div key={i} className="relative flex-shrink-0 w-52 h-72 overflow-hidden rounded-lg">
+              <Image src={src} alt="" fill sizes="208px" className="object-cover" />
             </div>
-            
-            <h2 className="font-display text-[2.8rem] leading-[1.04] tracking-[-0.03em] text-[#ece9e2] md:text-[3.8rem]">
-              Aryan Kumar
-            </h2>
-            
-            <p className="font-display text-2xl text-[#b58557]/90 leading-relaxed italic max-w-2xl">
-              &ldquo;{about.statement}&rdquo;
-            </p>
-            
-            <p className="text-sm md:text-base leading-8 text-[#ece9e2]/70 max-w-xl">
-              Currently pursuing a <strong className="text-[#ece9e2] font-semibold">BSc in Cinematography at AAFT Delhi (Noida)</strong>. Building a disciplined practice focused on lighting geometry, composition weight, editing pace, and high-contrast color theory.
-            </p>
-          </Reveal>
+          ))}
+        </div>
+      </div>
 
-          {/* Education & Experience Details */}
-          <div className="space-y-6 border-t border-[#ece9e2]/8 pt-8">
-            <Reveal className="space-y-6">
-              <div className="space-y-2">
-                <span className="text-[0.62rem] uppercase tracking-[0.25em] text-[#b58557]/80 font-semibold block">
-                  Education & Foundation
-                </span>
-                <p className="text-sm leading-relaxed text-[#ece9e2]/80">
-                  {about.education}
-                </p>
+      <div className="relative z-10 shell section-pad">
+        <div className="grid gap-16 lg:grid-cols-[1fr_0.75fr] lg:items-center">
+
+          {/* Text column */}
+          <div className="space-y-10">
+            <Reveal className="space-y-5">
+              <div className="flex items-center gap-3">
+                <span className="eyebrow">The Eye Behind the Lens</span>
+                <div className="flex-1 h-[1px] bg-[#c9a96e]/20" />
               </div>
+              <h2 className="section-title">About Me</h2>
 
-              <div className="space-y-4">
-                <span className="text-[0.62rem] uppercase tracking-[0.25em] text-[#b58557]/80 font-semibold block">
-                  Selected Engagements
-                </span>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {about.experience.map((item) => (
-                    <div key={item.title} className="bg-white/[0.02] border border-[#ece9e2]/5 rounded-xl p-4">
-                      <p className="text-[0.95rem] font-medium text-[#ece9e2]">
-                        {item.title}
-                      </p>
-                      <p className="mt-1 text-[0.72rem] uppercase tracking-[0.18em] text-[#ece9e2]/40">
-                        {item.meta}
-                      </p>
-                    </div>
-                  ))}
+              <p className="font-body text-base leading-8 text-[#f5f0e8]/65 max-w-xl">
+                I don&apos;t just shoot frames — I build worlds within them. Currently shaping my craft at{" "}
+                <strong className="text-[#f5f0e8] font-semibold">AAFT Noida</strong>, I believe
+                cinematography is the language where light speaks and silence screams.
+              </p>
+              <p className="font-body text-base leading-8 text-[#f5f0e8]/55 max-w-xl">
+                {about.statement} With a background in mass communication and an obsession for
+                visual storytelling, every frame I shoot is a question about what the human eye
+                really sees when it&apos;s allowed to slow down.
+              </p>
+              <p className="font-mono text-[0.68rem] tracking-[0.18em] text-[#f5f0e8]/35 uppercase">
+                {about.education}
+              </p>
+            </Reveal>
+
+            {/* Animated stats row */}
+            <Reveal delay={0.15}>
+              <div className="grid grid-cols-3 gap-4 border border-[#f5f0e8]/06 rounded-2xl p-6 bg-[#111111]/60 backdrop-blur-sm">
+                {STATS.map((s) => (
+                  <AnimatedStat key={s.label} {...s} />
+                ))}
+              </div>
+            </Reveal>
+
+            {/* Experience items */}
+            <Reveal delay={0.2} className="space-y-3">
+              {about.experience.map((item) => (
+                <div key={item.title} className="flex items-center justify-between border-t border-[#f5f0e8]/06 pt-3 first:border-t-0 first:pt-0">
+                  <p className="font-body text-sm text-[#f5f0e8]/80">{item.title}</p>
+                  <span className="font-mono text-[0.64rem] tracking-[0.2em] text-[#c9a96e]">{item.meta}</span>
                 </div>
-              </div>
+              ))}
+            </Reveal>
+
+            {/* CTAs */}
+            <Reveal delay={0.25} className="flex flex-wrap gap-4">
+              <a href="#contact" className="btn btn-gold" data-cursor="hover">Hire Me</a>
+              <a href={contact.resume} target="_blank" rel="noreferrer" className="btn" data-cursor="hover">
+                Download CV
+              </a>
             </Reveal>
           </div>
 
-          {/* CTAs matching hand-drawn Slide 1 */}
-          <Reveal className="flex flex-wrap gap-4 pt-4">
-            <a
-              href="#contact"
-              className="minimal-button minimal-button-solid cursor-none"
-              data-cursor="link"
+          {/* Portrait column */}
+          <Reveal delay={0.1} className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border border-[#f5f0e8]/06 bg-[#0d0d0d] group">
+            <motion.div
+              className="absolute inset-0"
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 1.4, ease: [0.43, 0.13, 0.23, 0.96] }}
             >
-              Hire Me
-            </a>
-            <a
-              href={contact.resume}
-              target="_blank"
-              rel="noreferrer"
-              className="minimal-button cursor-none"
-              data-cursor="link"
-            >
-              Download CV
-            </a>
+              <Image
+                src="/media/photography/editorial-04.jpg"
+                alt="Aryan Kumar — Portrait"
+                fill
+                sizes="(min-width: 1024px) 35vw, 100vw"
+                className="object-cover object-top brightness-90 contrast-105"
+              />
+            </motion.div>
+            {/* Cinematic overlay bars */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-0 left-0 right-0 h-5 bg-[#070707]/85 flex items-center px-3 gap-2">
+                <span className="font-mono text-[0.48rem] tracking-[0.2em] text-[#c9a96e]/70 uppercase">REC ●</span>
+                <span className="font-mono text-[0.48rem] tracking-[0.2em] text-[#f5f0e8]/30 uppercase ml-auto">24fps</span>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-5 bg-[#070707]/85 flex items-center px-3">
+                <span className="font-mono text-[0.48rem] tracking-[0.2em] text-[#f5f0e8]/30 uppercase">Sony · f/1.8</span>
+              </div>
+            </div>
           </Reveal>
         </div>
-
-        {/* Ken Burns Portrait Column */}
-        <Reveal delay={0.2} className="relative w-full aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] rounded-[2rem] overflow-hidden border border-[#ece9e2]/8 group bg-[#0d0d0d]">
-          {/* Framer motion slow zoom container */}
-          <motion.div
-            className="absolute inset-0"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-          >
-            <Image
-              src="/media/photography/editorial-01.jpg"
-              alt="Portrait of Aryan Kumar"
-              fill
-              sizes="(min-width: 1024px) 45vw, 100vw"
-              className="object-cover object-center transition-all duration-[3000ms] ease-out group-hover:brightness-105"
-            />
-          </motion.div>
-          
-          {/* Cinema viewfinder crop bars overlay */}
-          <div className="absolute inset-0 pointer-events-none border-[12px] border-black/80 flex flex-col justify-between">
-            <div className="flex justify-between p-2 text-[#ece9e2]/30 text-[0.55rem] font-mono">
-              <span>REC</span>
-              <span>100%</span>
-            </div>
-            <div className="flex justify-between p-2 text-[#ece9e2]/30 text-[0.55rem] font-mono">
-              <span>24 fps</span>
-              <span>A7SIII</span>
-            </div>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

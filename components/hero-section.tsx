@@ -1,181 +1,168 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { hero, socialLinks } from "@/lib/site-data";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import Image from "next/image";
+
+const TITLE = "ARYAN KUMAR";
+const letters = TITLE.split("");
 
 export function HeroSection() {
-  const [flickerActive, setFlickerActive] = useState(false);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 60, damping: 18 });
+  const springY = useSpring(mouseY, { stiffness: 60, damping: 18 });
+  const imgX = useTransform(springX, [-1, 1], ["-12px", "12px"]);
+  const imgY = useTransform(springY, [-1, 1], ["-8px", "8px"]);
 
-  const triggerClapFlicker = () => {
-    setFlickerActive(true);
-    setTimeout(() => setFlickerActive(false), 800);
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    mouseX.set(((e.clientX - left) / width) * 2 - 1);
+    mouseY.set(((e.clientY - top) / height) * 2 - 1);
   };
 
-  const resumeLink = socialLinks.find((item) => item.label === "Resume")?.href;
-
   return (
-    <section className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-black select-none border-b border-[#ece9e2]/5">
-      {/* Background Video Loop with Dark Matte Mask */}
-      <div className="absolute inset-0 z-0">
-        <video
-          className="h-full w-full object-cover opacity-30 brightness-[0.7] contrast-[1.05]"
-          src="/media/reels/montage-preview.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/80" />
-        
-        {/* Cinematic Grid Scanlines */}
-        <div 
-          className="absolute inset-0 pointer-events-none opacity-[0.03]" 
-          style={{
-            backgroundImage: "linear-gradient(rgba(236,233,226,1) 1px, transparent 1px)",
-            backgroundSize: "100% 4px"
-          }}
-        />
-      </div>
+    <section
+      onMouseMove={handleMouseMove}
+      className="relative w-full min-h-screen flex flex-col overflow-hidden bg-[#070707]"
+    >
+      {/* Ken Burns parallax background */}
+      <motion.div
+        className="absolute inset-[-5%] z-0"
+        style={{ x: imgX, y: imgY }}
+      >
+        <motion.div
+          className="absolute inset-0"
+          animate={{ scale: [1, 1.06, 1] }}
+          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Image
+            src="/media/photography/editorial-02.jpg"
+            alt="Cinematic background"
+            fill
+            priority
+            sizes="110vw"
+            className="object-cover object-center brightness-[0.28] contrast-110"
+          />
+        </motion.div>
+      </motion.div>
 
-      {/* Retro Projector Flicker Easter Egg Overlay */}
-      {flickerActive && (
-        <div className="absolute inset-0 z-30 pointer-events-none bg-[#ece9e2]/5 animate-flicker" />
-      )}
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#070707] via-[#070707]/60 to-[#070707]/30" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#070707]/80 via-transparent to-[#070707]/40" />
 
-      {/* Top Bar / Matte Header */}
-      <div className="relative z-20 w-full px-6 py-6 md:px-12 flex items-center justify-between border-b border-[#ece9e2]/5 bg-black/40 backdrop-blur-md">
+      {/* Film grain */}
+      <div className="grain-overlay animate-grain pointer-events-none fixed inset-[-200%] z-[2]" />
+
+      {/* Top bar */}
+      <div className="relative z-10 flex items-center justify-between px-6 py-5 md:px-12 border-b border-[#f5f0e8]/05 bg-black/30 backdrop-blur-sm">
         <div className="flex items-center gap-3">
-          {/* Interactive Clapperboard Logo */}
-          <button
-            type="button"
-            onClick={triggerClapFlicker}
-            className="group flex items-center justify-center p-1 rounded transition hover:bg-[#ece9e2]/5 cursor-none"
-            data-cursor="link"
-            aria-label="Clap board"
-          >
-            <svg
-              viewBox="0 0 100 100"
-              className="w-8 h-8 fill-none stroke-[#b58557] group-hover:stroke-[#ece9e2] transition duration-300"
-              strokeWidth="4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              {/* Clapperboard Box */}
-              <rect x="15" y="45" width="70" height="40" rx="3" />
-              <line x1="15" y1="58" x2="85" y2="58" />
-              <line x1="30" y1="45" x2="40" y2="58" />
-              <line x1="50" y1="45" x2="60" y2="58" />
-              
-              {/* Hinged lid with animation */}
-              <g className="animate-clapper">
-                <polygon points="15,33 85,33 80,45 15,45" />
-                <line x1="28" y1="33" x2="38" y2="45" />
-                <line x1="48" y1="33" x2="58" y2="45" />
-              </g>
-            </svg>
-          </button>
-          <span className="text-[0.62rem] uppercase tracking-[0.32em] text-[#b58557] font-semibold hidden sm:inline">
-            Aryan Kumar • Student Director
+          {/* Clapperboard mini logo */}
+          <svg viewBox="0 0 40 34" className="w-8 h-7 fill-none stroke-[#c9a96e]" strokeWidth="2" strokeLinecap="round">
+            <rect x="4" y="16" width="32" height="16" rx="2" />
+            <line x1="4" y1="22" x2="36" y2="22" />
+            <line x1="13" y1="16" x2="17" y2="22" />
+            <line x1="24" y1="16" x2="28" y2="22" />
+            <polygon points="4,10 36,10 34,16 4,16" />
+            <line x1="12" y1="10" x2="16" y2="16" />
+            <line x1="23" y1="10" x2="27" y2="16" />
+          </svg>
+          <span className="font-mono text-[0.62rem] tracking-[0.3em] uppercase text-[#c9a96e] hidden sm:inline">
+            DRISHTIIKAAR
           </span>
         </div>
-
-        <div className="text-[0.65rem] uppercase tracking-[0.24em] text-[#ece9e2]/50 flex gap-4">
-          <span>AAFT Delhi</span>
-          <span className="text-[#ece9e2]/20">/</span>
-          <span>Drishtiikaar</span>
+        <div className="font-mono text-[0.6rem] tracking-[0.22em] uppercase text-[#f5f0e8]/35 flex gap-5">
+          <span>AAFT Noida</span>
+          <span className="text-[#f5f0e8]/15">/</span>
+          <span>BSc Cinematography</span>
         </div>
       </div>
 
-      {/* Main Typography Block */}
-      <div className="relative z-10 container-shell flex flex-col justify-center flex-grow py-12 md:py-20">
-        <div className="max-w-4xl space-y-6">
+      {/* Main content */}
+      <div className="relative z-10 flex flex-col justify-center flex-grow px-6 py-16 md:px-16">
+        <div className="max-w-5xl space-y-8">
+          {/* Eyebrow */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-2"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
+            className="flex items-center gap-3"
           >
-            <div className="h-[1px] w-8 bg-[#b58557]" />
-            <p className="text-[0.7rem] uppercase tracking-[0.35em] text-[#b58557] font-semibold">
-              Selected Portfolio
-            </p>
+            <div className="h-[1px] w-10 bg-[#c9a96e]" />
+            <span className="eyebrow">Cinematographer · Filmmaker · Visual Storyteller</span>
           </motion.div>
 
-          <h1 className="font-display text-[4.8rem] leading-[0.82] tracking-[-0.04em] text-[#ece9e2] sm:text-[6.8rem] md:text-[8.5rem] lg:text-[10rem]">
-            {/* Split name anims */}
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="block"
-            >
-              ARYAN
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="block text-[#b58557]"
-            >
-              KUMAR
-            </motion.span>
+          {/* Letter-by-letter title */}
+          <h1 className="font-display font-black leading-[0.85] tracking-[-0.02em]"
+            style={{ fontSize: "clamp(4.5rem, 12vw, 11rem)" }}
+          >
+            {letters.map((letter, i) => (
+              <motion.span
+                key={i}
+                className={letter === " " ? "inline-block w-8" : "inline-block"}
+                style={{ color: i >= 6 ? "#c9a96e" : "#f5f0e8" }}
+                initial={{ opacity: 0, y: 50, rotateX: -40 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.1 + i * 0.055,
+                  ease: [0.43, 0.13, 0.23, 0.96],
+                }}
+              >
+                {letter}
+              </motion.span>
+            ))}
           </h1>
 
+          {/* Subtitle block */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-4 pt-4 border-t border-[#ece9e2]/5"
+            transition={{ duration: 0.7, delay: 0.75, ease: [0.43, 0.13, 0.23, 0.96] }}
+            className="space-y-3 border-l-2 border-[#c9a96e] pl-5"
           >
-            <p className="font-display text-xl sm:text-2xl text-[#ece9e2]/80 leading-relaxed max-w-xl italic">
-              &ldquo;{hero.statement}&rdquo;
+            <p className="font-display text-xl md:text-2xl italic text-[#f5f0e8]/80 leading-relaxed">
+              &ldquo;I don&apos;t just shoot frames — I build worlds within them.&rdquo;
             </p>
-            <p className="text-xs uppercase tracking-[0.24em] text-[#ece9e2]/40 font-mono">
-              Filmmaker • Cinematographer • Writer • Editor
+            <p className="font-mono text-[0.68rem] tracking-[0.24em] uppercase text-[#f5f0e8]/40">
+              BSc Cinematography · AAFT Noida · 2025
             </p>
+          </motion.div>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.9, ease: [0.43, 0.13, 0.23, 0.96] }}
+            className="flex flex-wrap gap-4 pt-2"
+          >
+            <a href="#featured-work" className="btn btn-gold" data-cursor="hover">
+              View Films
+            </a>
+            <a href="#contact" className="btn" data-cursor="hover">
+              Work Together
+            </a>
           </motion.div>
         </div>
       </div>
 
-      {/* Bottom Bar / Matte Footer */}
-      <div className="relative z-20 w-full px-6 py-6 md:px-12 flex flex-col sm:flex-row gap-4 justify-between items-center border-t border-[#ece9e2]/5 bg-black/40 backdrop-blur-md">
-        {/* Buttons / Actions */}
-        <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-wrap gap-4"
-        >
-          <a
-            href="#selected-works"
-            className="minimal-button minimal-button-solid cursor-none"
-            data-cursor="link"
-          >
-            View Work
-          </a>
-          {resumeLink && (
-            <a
-              href={resumeLink}
-              target="_blank"
-              rel="noreferrer"
-              className="minimal-button cursor-none"
-              data-cursor="link"
-            >
-              Download CV
-            </a>
-          )}
-        </motion.div>
-
-        {/* Framing & Spec display */}
-        <div className="text-[0.62rem] uppercase tracking-[0.26em] text-[#ece9e2]/30 font-mono flex items-center gap-4">
-          <span>FPS: 24.00</span>
-          <span>•</span>
-          <span>ASPECT Ratio: 2.39:1</span>
-          <span>•</span>
-          <span>ISO: 400</span>
+      {/* Spec footer */}
+      <div className="relative z-10 border-t border-[#f5f0e8]/05 bg-black/30 backdrop-blur-sm px-6 py-4 md:px-12 flex items-center justify-between">
+        <div className="font-mono text-[0.58rem] tracking-[0.22em] uppercase text-[#f5f0e8]/25 flex gap-6">
+          <span>FPS 24.00</span>
+          <span>·</span>
+          <span>2.39:1 Scope</span>
+          <span>·</span>
+          <span>ISO 400</span>
         </div>
+        {/* Animated scroll chevron */}
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+          className="text-[#c9a96e]/60"
+        >
+          <ChevronDown className="w-5 h-5" />
+        </motion.div>
       </div>
     </section>
   );

@@ -5,161 +5,117 @@ import { useEffect, useState } from "react";
 
 export function CinematicLoader() {
   const [count, setCount] = useState(5);
-  const [isClapped, setIsClapped] = useState(false);
+  const [clapped, setClapped] = useState(false);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     if (count > 1) {
-      const timer = setTimeout(() => {
-        setCount(count - 1);
-      }, 500);
-      return () => clearTimeout(timer);
-    } else {
-      // Countdown finished, activate clapper clap
-      const clapTimer = setTimeout(() => {
-        setIsClapped(true);
-      }, 500);
-
-      const exitTimer = setTimeout(() => {
-        setVisible(false);
-      }, 1100);
-
-      return () => {
-        clearTimeout(clapTimer);
-        clearTimeout(exitTimer);
-      };
+      const t = setTimeout(() => setCount(c => c - 1), 420);
+      return () => clearTimeout(t);
     }
+    const clap = setTimeout(() => setClapped(true), 420);
+    const exit = setTimeout(() => setVisible(false), 950);
+    return () => { clearTimeout(clap); clearTimeout(exit); };
   }, [count]);
 
   return (
     <AnimatePresence>
-      {visible ? (
+      {visible && (
         <motion.div
-          className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-[#070707] text-[#ece9e2] select-none overflow-hidden"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.6, ease: "easeInOut" } }}
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#070707] select-none overflow-hidden"
+          exit={{ opacity: 0, transition: { duration: 0.55, ease: "easeInOut" } }}
         >
-          {/* Dust & Light Flicker Effect */}
-          <div className="absolute inset-0 pointer-events-none bg-black/10 opacity-30 animate-pulse z-10" />
+          {/* Scanlines */}
+          <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
+            style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,1) 2px, rgba(255,255,255,1) 4px)" }}
+          />
 
-          <div className="relative flex flex-col items-center justify-center w-full max-w-md p-6 text-center z-20">
-            {!isClapped ? (
-              // Film Academy Projector Countdown Leader
-              <motion.div 
-                key="countdown-leader"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                className="relative flex items-center justify-center w-64 h-64 rounded-full border-4 border-dashed border-[#ece9e2]/15"
-              >
-                {/* Concentric circles */}
-                <div className="absolute w-56 h-56 rounded-full border border-[#ece9e2]/10" />
-                <div className="absolute w-44 h-44 rounded-full border-2 border-[#ece9e2]/25" />
-                <div className="absolute w-12 h-12 rounded-full border border-[#ece9e2]/10" />
-
-                {/* Scope crosshairs */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-[1px] bg-[#ece9e2]/10" />
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="h-full w-[1px] bg-[#ece9e2]/10" />
-                </div>
-
-                {/* Radial Sweeper */}
+          {!clapped ? (
+            <motion.div
+              key="counter"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex flex-col items-center gap-10"
+            >
+              {/* Circular leader */}
+              <div className="relative w-52 h-52 flex items-center justify-center">
+                {/* Outer ring spinning */}
                 <motion.div
-                  className="absolute w-full h-full rounded-full border-t border-[#b58557] origin-center z-30"
+                  className="absolute inset-0 rounded-full border-2 border-dashed border-[#c9a96e]/20"
                   animate={{ rotate: 360 }}
-                  transition={{ repeat: Infinity, duration: 0.5, ease: "linear" }}
+                  transition={{ repeat: Infinity, duration: 3.5, ease: "linear" }}
                 />
-
-                {/* Rotating Film Reels Backdrop */}
+                {/* Inner static ring */}
+                <div className="absolute inset-6 rounded-full border border-[#f5f0e8]/10" />
+                {/* Crosshairs */}
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full h-[1px] bg-[#f5f0e8]/08" />
+                </div>
+                <div className="absolute inset-0 flex justify-center">
+                  <div className="h-full w-[1px] bg-[#f5f0e8]/08" />
+                </div>
+                {/* Sweeper */}
                 <motion.div
-                  className="absolute inset-0 border border-t-[#ece9e2]/20 border-r-[#ece9e2]/5 rounded-full"
-                  animate={{ rotate: -360 }}
-                  transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+                  className="absolute inset-0 rounded-full border-t-2 border-[#c9a96e]"
+                  animate={{ rotate: 360 }}
+                  transition={{ repeat: Infinity, duration: 0.42, ease: "linear" }}
                 />
-
-                {/* Changing Numbers */}
+                {/* Number */}
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={count}
-                    initial={{ opacity: 0, scale: 0.7 }}
+                    initial={{ opacity: 0, scale: 0.6 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 1.3 }}
-                    transition={{ duration: 0.15 }}
-                    className="font-display text-8xl font-bold tracking-tight text-[#ece9e2]"
+                    exit={{ opacity: 0, scale: 1.4 }}
+                    transition={{ duration: 0.12 }}
+                    className="font-display text-8xl font-bold text-[#f5f0e8] z-10"
                   >
                     {count}
                   </motion.span>
                 </AnimatePresence>
+              </div>
 
-                <div className="absolute -bottom-16 text-center space-y-1">
-                  <span className="text-[0.62rem] uppercase tracking-[0.3em] text-[#b58557]/80 font-semibold">
-                    System Startup
-                  </span>
-                  <p className="text-xs font-display italic text-[#ece9e2]/40">
-                    Establishing Frame Rate
-                  </p>
-                </div>
-              </motion.div>
-            ) : (
-              // Clapperboard Clap Event
-              <motion.div
-                key="clapper"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="flex flex-col items-center gap-6"
-              >
-                {/* Visual Clapperboard Icon */}
-                <div className="relative w-32 h-32 flex flex-col items-center justify-center">
-                  <svg
-                    viewBox="0 0 100 100"
-                    className="w-full h-full fill-none stroke-[#ece9e2]"
-                    strokeWidth="3.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    {/* Clapperboard Body */}
-                    <rect x="15" y="45" width="70" height="40" rx="3" />
-                    <line x1="15" y1="58" x2="85" y2="58" />
-                    
-                    {/* Diagonal lines inside body */}
-                    <line x1="30" y1="45" x2="40" y2="58" />
-                    <line x1="50" y1="45" x2="60" y2="58" />
-                    <line x1="70" y1="45" x2="80" y2="58" />
-
-                    {/* Hinged Top Board (Rotates for the clap) */}
-                    <motion.g
-                      style={{ originX: "15px", originY: "45px" }}
-                      initial={{ rotate: -25 }}
-                      animate={{ rotate: 0 }}
-                      transition={{ duration: 0.16, ease: "easeIn" }}
-                    >
-                      <polygon points="15,33 85,33 80,45 15,45" />
-                      {/* Stripes on hinged board */}
-                      <line x1="28" y1="33" x2="38" y2="45" />
-                      <line x1="48" y1="33" x2="58" y2="45" />
-                      <line x1="68" y1="33" x2="78" y2="45" />
-                    </motion.g>
-                  </svg>
-                </div>
-
-                <div className="space-y-1">
-                  <p className="text-[0.7rem] uppercase tracking-[0.35em] text-[#b58557] font-semibold">
-                    SCENE 01 • TAKE 01
-                  </p>
-                  <h3 className="font-display text-3xl tracking-[0.1em] text-[#ece9e2]">
-                    ARYAN KUMAR
-                  </h3>
-                  <p className="text-[0.62rem] uppercase tracking-[0.25em] text-[#ece9e2]/40">
-                    PORTFOLIO REDESIGN
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </div>
+              <div className="text-center space-y-2">
+                <p className="font-mono text-[0.62rem] uppercase tracking-[0.38em] text-[#c9a96e]/80">
+                  Preparing Projection
+                </p>
+                <p className="font-display text-lg tracking-[0.15em] text-[#f5f0e8]/50 italic">
+                  Aryan Kumar
+                </p>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="clapper"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="flex flex-col items-center gap-6"
+            >
+              <svg viewBox="0 0 120 100" className="w-36 h-28 fill-none stroke-[#c9a96e]" strokeWidth="3" strokeLinecap="round">
+                <rect x="10" y="48" width="100" height="45" rx="4" />
+                <line x1="10" y1="65" x2="110" y2="65" />
+                <line x1="30" y1="48" x2="42" y2="65" />
+                <line x1="58" y1="48" x2="70" y2="65" />
+                <line x1="85" y1="48" x2="97" y2="65" />
+                <motion.g
+                  initial={{ rotate: -28 }} animate={{ rotate: 0 }}
+                  transition={{ duration: 0.13, ease: "easeIn" }}
+                  style={{ originX: "10px", originY: "48px" }}
+                >
+                  <polygon points="10,35 110,35 105,48 10,48" />
+                  <line x1="30" y1="35" x2="40" y2="48" />
+                  <line x1="58" y1="35" x2="68" y2="48" />
+                  <line x1="85" y1="35" x2="95" y2="48" />
+                </motion.g>
+              </svg>
+              <div className="text-center space-y-1">
+                <p className="font-mono text-[0.6rem] uppercase tracking-[0.35em] text-[#c9a96e]">Scene 01 · Take 01</p>
+                <h2 className="font-display text-3xl tracking-[0.12em] text-[#f5f0e8]">ARYAN KUMAR</h2>
+              </div>
+            </motion.div>
+          )}
         </motion.div>
-      ) : null}
+      )}
     </AnimatePresence>
   );
 }
