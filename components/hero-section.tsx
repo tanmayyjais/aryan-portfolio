@@ -4,8 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
-const TITLE = "ARYAN KUMAR";
-const letters = TITLE.split("");
+import { useTypewriter } from "@/hooks/use-typewriter";
 
 export function HeroSection() {
   const mouseX = useMotionValue(0);
@@ -14,6 +13,17 @@ export function HeroSection() {
   const springY = useSpring(mouseY, { stiffness: 60, damping: 18 });
   const imgX = useTransform(springX, [-1, 1], ["-12px", "12px"]);
   const imgY = useTransform(springY, [-1, 1], ["-8px", "8px"]);
+
+  const { displayText, isFinished } = useTypewriter({
+    phrases: [
+      "Hi, I'm Aryan Kumar.",
+      "I'm a Cinematographer.",
+      "I'm a Filmmaker.",
+      "I'm a Director.",
+      "I'm a Visual Storyteller.",
+      "I'm a Photographer."
+    ]
+  });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -37,12 +47,12 @@ export function HeroSection() {
           transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
         >
           <Image
-            src="/media/photography/editorial-02.jpg"
+            src="/media/personal/media__1782677888374.jpg"
             alt="Cinematic background"
             fill
             priority
             sizes="110vw"
-            className="object-cover object-center brightness-[0.28] contrast-110"
+            className="object-cover object-center brightness-[0.4] opacity-70 contrast-110"
           />
         </motion.div>
       </motion.div>
@@ -92,27 +102,19 @@ export function HeroSection() {
             <span className="eyebrow">Cinematographer · Filmmaker · Visual Storyteller</span>
           </motion.div>
 
-          {/* Letter-by-letter title */}
-          <h1 className="font-display font-black leading-[0.85] tracking-[-0.02em]"
-            style={{ fontSize: "clamp(4.5rem, 12vw, 11rem)" }}
-          >
-            {letters.map((letter, i) => (
+          {/* Letter-by-letter title -> Typewriter animation */}
+          <div aria-live="polite" aria-label="Hi, I'm Aryan Kumar. I'm a Cinematographer, Filmmaker, Director, Visual Storyteller, and Photographer.">
+            <h1 className="font-display font-black leading-[0.9] tracking-[-0.02em] text-[#f5f0e8] min-h-[2.5em] md:min-h-[1.8em]"
+              style={{ fontSize: "clamp(3.2rem, 8vw, 7.5rem)" }}
+            >
+              {displayText}
               <motion.span
-                key={i}
-                className={letter === " " ? "inline-block w-8" : "inline-block"}
-                style={{ color: i >= 6 ? "#c9a96e" : "#f5f0e8" }}
-                initial={{ opacity: 0, y: 50, rotateX: -40 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.1 + i * 0.055,
-                  ease: [0.43, 0.13, 0.23, 0.96],
-                }}
-              >
-                {letter}
-              </motion.span>
-            ))}
-          </h1>
+                animate={{ opacity: isFinished ? 0 : [1, 0, 1] }}
+                transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                className="inline-block ml-2 w-[5px] h-[0.75em] bg-[#c9a96e] align-middle"
+              />
+            </h1>
+          </div>
 
           {/* Subtitle block */}
           <motion.div

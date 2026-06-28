@@ -30,7 +30,7 @@ const STEPS = [
     icon: Camera,
     description:
       "Where instinct meets discipline. I work the light, control the frame, and move with intention. Every decision — focus, angle, exposure — is a creative choice, not an accident.",
-    image: "/media/reels/ten-shot-01.jpg",
+    image: "/media/personal/media__1782677888145.jpg",
     tools: "Sony Mirrorless · Prime Lenses · Gimbals",
   },
   {

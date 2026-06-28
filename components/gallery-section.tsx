@@ -15,6 +15,15 @@ const ALL_IMAGES = [
   { src: "/media/photography/editorial-03.jpg", caption: "Portrait Study 03", category: "Portraits" as Category, exif: "f/2.2 · ISO 320 · 85mm" },
   { src: "/media/photography/editorial-04.jpg", caption: "Portrait Study 04", category: "Portraits" as Category, exif: "f/1.8 · ISO 100 · 50mm" },
   { src: "/media/photography/editorial-05.jpg", caption: "Portrait Study 05", category: "Portraits" as Category, exif: "f/1.8 · ISO 250 · 35mm" },
+  // Drive Fashion Stills
+  { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2108 (1) (1).jpeg", caption: "Fashion Portrait 01", category: "Portraits" as Category, exif: "Editorial Study" },
+  { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2147 (1).jpeg", caption: "Fashion Portrait 02", category: "Portraits" as Category, exif: "Editorial Study" },
+  { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2152 (1).jpeg", caption: "Fashion Portrait 03", category: "Portraits" as Category, exif: "Editorial Study" },
+  { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2157 (1).jpeg", caption: "Fashion Portrait 04", category: "Portraits" as Category, exif: "Editorial Study" },
+  { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2176 (1).jpeg", caption: "Fashion Portrait 05", category: "Portraits" as Category, exif: "Editorial Study" },
+  // Personal
+  { src: "/media/personal/media__1782677888107.jpg", caption: "Cinematographer Portrait", category: "Portraits" as Category, exif: "Self" },
+  { src: "/media/personal/media__1782677888145.jpg", caption: "Cinematographer BTS", category: "BTS" as Category, exif: "On Set" },
   // Film stills
   { src: "/media/films/focal-void/still-01.jpg", caption: "Focal Void — Frame 01", category: "Stills" as Category, exif: "Focal Void · 2026" },
   { src: "/media/films/focal-void/still-02.jpg", caption: "Focal Void — Frame 02", category: "Stills" as Category, exif: "Focal Void · 2026" },

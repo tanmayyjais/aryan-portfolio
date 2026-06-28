@@ -16,7 +16,7 @@ const FILMS = [
     role: "Director · Cinematographer · Editor",
     year: "2026",
     runtime: "~8 min",
-    thumbnail: "/media/films/focal-void/still-02.jpg",
+    thumbnail: "/media/films/focal-void/focal-void-poster.jpg",
     synopsis: "A psychological study of isolation and visual tension. Told in high-contrast frames where stillness speaks louder than movement — exploring the thin line between perception and reality.",
     credits: [
       { label: "Written & Directed by", value: "Aryan Kumar" },
@@ -34,7 +34,7 @@ const FILMS = [
     role: "Cinematographer · Director",
     year: "2025",
     runtime: "~5 min",
-    thumbnail: "/media/films/focal-void/still-03.jpg",
+    thumbnail: "/media/films/film-2/film-2-poster.jpg",
     synopsis: "An experimental exploration of spatial depth and color temperature. Frames built to feel like photographs that breathe — each shot a meditation on time standing still.",
     credits: [
       { label: "Direction & Camera", value: "Aryan Kumar" },

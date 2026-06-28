@@ -284,6 +284,76 @@ export const stills: PortfolioEntry[] = [
     },
     exif: "Prime Lens • f/1.8 • 1/160s • ISO 250",
   },
+  {
+    id: "fashion-01",
+    title: "Fashion Study 01",
+    kind: "photo",
+    year: "2026",
+    role: "Photography",
+    sourceLabel: "Editorial",
+    thumbnail: { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2108 (1) (1).jpeg", alt: "Fashion portrait", type: "image", orientation: "portrait", width: 1280, height: 1706 },
+    media: { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2108 (1) (1).jpeg", alt: "Fashion portrait", type: "image", orientation: "portrait", width: 1280, height: 1706 }
+  },
+  {
+    id: "fashion-02",
+    title: "Fashion Study 02",
+    kind: "photo",
+    year: "2026",
+    role: "Photography",
+    sourceLabel: "Editorial",
+    thumbnail: { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2147 (1).jpeg", alt: "Fashion portrait", type: "image", orientation: "portrait", width: 1280, height: 1706 },
+    media: { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2147 (1).jpeg", alt: "Fashion portrait", type: "image", orientation: "portrait", width: 1280, height: 1706 }
+  },
+  {
+    id: "fashion-03",
+    title: "Fashion Study 03",
+    kind: "photo",
+    year: "2026",
+    role: "Photography",
+    sourceLabel: "Editorial",
+    thumbnail: { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2152 (1).jpeg", alt: "Fashion portrait", type: "image", orientation: "portrait", width: 1280, height: 1706 },
+    media: { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2152 (1).jpeg", alt: "Fashion portrait", type: "image", orientation: "portrait", width: 1280, height: 1706 }
+  },
+  {
+    id: "fashion-04",
+    title: "Fashion Study 04",
+    kind: "photo",
+    year: "2026",
+    role: "Photography",
+    sourceLabel: "Editorial",
+    thumbnail: { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2157 (1).jpeg", alt: "Fashion portrait", type: "image", orientation: "portrait", width: 1280, height: 1706 },
+    media: { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2157 (1).jpeg", alt: "Fashion portrait", type: "image", orientation: "portrait", width: 1280, height: 1706 }
+  },
+  {
+    id: "fashion-05",
+    title: "Fashion Study 05",
+    kind: "photo",
+    year: "2026",
+    role: "Photography",
+    sourceLabel: "Editorial",
+    thumbnail: { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2176 (1).jpeg", alt: "Fashion portrait", type: "image", orientation: "portrait", width: 1280, height: 1706 },
+    media: { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2176 (1).jpeg", alt: "Fashion portrait", type: "image", orientation: "portrait", width: 1280, height: 1706 }
+  },
+  {
+    id: "personal-01",
+    title: "Cinematographer Portrait",
+    kind: "photo",
+    year: "2026",
+    role: "Photography",
+    sourceLabel: "Personal",
+    thumbnail: { src: "/media/personal/media__1782677888107.jpg", alt: "Cinematographer Aryan Kumar", type: "image", orientation: "portrait", width: 1280, height: 1706 },
+    media: { src: "/media/personal/media__1782677888107.jpg", alt: "Cinematographer Aryan Kumar", type: "image", orientation: "portrait", width: 1280, height: 1706 }
+  },
+  {
+    id: "personal-02",
+    title: "Cinematographer BTS",
+    kind: "photo",
+    year: "2026",
+    role: "Photography",
+    sourceLabel: "BTS",
+    thumbnail: { src: "/media/personal/media__1782677888145.jpg", alt: "Behind the scenes camera rig", type: "image", orientation: "landscape", width: 1920, height: 1080 },
+    media: { src: "/media/personal/media__1782677888145.jpg", alt: "Behind the scenes camera rig", type: "image", orientation: "landscape", width: 1920, height: 1080 }
+  }
 ];
 
 export const about: AboutBlock = {

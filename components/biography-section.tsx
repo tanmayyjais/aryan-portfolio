@@ -9,13 +9,18 @@ import { about, contact } from "@/lib/site-data";
 // All available images for the filmstrip marquee
 const MARQUEE_IMAGES = [
   "/media/photography/editorial-01.jpg",
+  "/media/drive_pull/Portfolio content/Fashion/IMG_2108 (1) (1).jpeg",
   "/media/reels/ten-shot-01.jpg",
   "/media/photography/editorial-03.jpg",
+  "/media/drive_pull/Portfolio content/Fashion/IMG_2147 (1).jpeg",
   "/media/reels/intellectual-01.jpg",
   "/media/photography/editorial-05.jpg",
+  "/media/drive_pull/Portfolio content/Fashion/IMG_2152 (1).jpeg",
   "/media/reels/montage-01.jpg",
   "/media/photography/editorial-02.jpg",
+  "/media/drive_pull/Portfolio content/Fashion/IMG_2157 (1).jpeg",
   "/media/reels/ten-shot-02.jpg",
+  "/media/personal/media__1782677888145.jpg",
 ];
 
 const STATS = [
@@ -126,11 +131,11 @@ export function BiographySection() {
               transition={{ duration: 1.4, ease: [0.43, 0.13, 0.23, 0.96] }}
             >
               <Image
-                src="/media/photography/editorial-04.jpg"
+                src="/media/personal/media__1782677888107.jpg"
                 alt="Aryan Kumar — Portrait"
                 fill
                 sizes="(min-width: 1024px) 35vw, 100vw"
-                className="object-cover object-top brightness-90 contrast-105"
+                className="object-cover object-center brightness-90 contrast-105"
               />
             </motion.div>
             {/* Cinematic overlay bars */}
