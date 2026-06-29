@@ -353,14 +353,80 @@ export const stills: PortfolioEntry[] = [
     sourceLabel: "BTS",
     thumbnail: { src: "/media/personal/media__1782677888145.jpg", alt: "Behind the scenes camera rig", type: "image", orientation: "landscape", width: 1920, height: 1080 },
     media: { src: "/media/personal/media__1782677888145.jpg", alt: "Behind the scenes camera rig", type: "image", orientation: "landscape", width: 1920, height: 1080 }
+  },
+  {
+    id: "drive-bts-01",
+    title: "Behind the Lens",
+    kind: "photo",
+    year: "2024",
+    role: "Photography",
+    sourceLabel: "BTS",
+    thumbnail: { src: "/media/drive_new/roots/IMG_20241026_031024.jpg", alt: "Aryan Kumar BTS", type: "image", orientation: "portrait", width: 1080, height: 1440 },
+    media: { src: "/media/drive_new/roots/IMG_20241026_031024.jpg", alt: "Aryan Kumar BTS", type: "image", orientation: "portrait", width: 1080, height: 1440 },
+    exif: "Sony · f/2.0 · BTS"
+  },
+  {
+    id: "drive-bts-02",
+    title: "On Set",
+    kind: "photo",
+    year: "2024",
+    role: "Photography",
+    sourceLabel: "BTS",
+    thumbnail: { src: "/media/drive_new/roots/IMG_20241026_031132.jpg", alt: "On set moment", type: "image", orientation: "portrait", width: 1080, height: 1440 },
+    media: { src: "/media/drive_new/roots/IMG_20241026_031132.jpg", alt: "On set moment", type: "image", orientation: "portrait", width: 1080, height: 1440 },
+    exif: "BTS · 2024"
+  },
+  {
+    id: "drive-bts-03",
+    title: "The Frame",
+    kind: "photo",
+    year: "2024",
+    role: "Photography",
+    sourceLabel: "BTS",
+    thumbnail: { src: "/media/drive_new/roots/IMG_20241026_031408.jpg", alt: "Production frame", type: "image", orientation: "portrait", width: 1080, height: 1440 },
+    media: { src: "/media/drive_new/roots/IMG_20241026_031408.jpg", alt: "Production frame", type: "image", orientation: "portrait", width: 1080, height: 1440 },
+    exif: "BTS · 2024"
+  },
+  {
+    id: "drive-bts-04",
+    title: "Street Light",
+    kind: "photo",
+    year: "2024",
+    role: "Photography",
+    sourceLabel: "Street",
+    thumbnail: { src: "/media/drive_new/roots/IMG_20241026_031603.jpg", alt: "Street scene", type: "image", orientation: "portrait", width: 1080, height: 1440 },
+    media: { src: "/media/drive_new/roots/IMG_20241026_031603.jpg", alt: "Street scene", type: "image", orientation: "portrait", width: 1080, height: 1440 },
+    exif: "ISO 800 · f/2.8"
+  },
+  {
+    id: "drive-bts-05",
+    title: "Natural Light",
+    kind: "photo",
+    year: "2024",
+    role: "Photography",
+    sourceLabel: "Documentary",
+    thumbnail: { src: "/media/drive_new/roots/IMG_20241026_031722.jpg", alt: "Documentary still", type: "image", orientation: "portrait", width: 1080, height: 1440 },
+    media: { src: "/media/drive_new/roots/IMG_20241026_031722.jpg", alt: "Documentary still", type: "image", orientation: "portrait", width: 1080, height: 1440 },
+    exif: "Natural Light · 2024"
+  },
+  {
+    id: "drive-bts-06",
+    title: "Motion Study",
+    kind: "photo",
+    year: "2024",
+    role: "Photography",
+    sourceLabel: "Candid",
+    thumbnail: { src: "/media/drive_new/roots/Picsart_24-10-26_06-56-48-427.jpg", alt: "Edited portrait", type: "image", orientation: "portrait", width: 1080, height: 1350 },
+    media: { src: "/media/drive_new/roots/Picsart_24-10-26_06-56-48-427.jpg", alt: "Edited portrait", type: "image", orientation: "portrait", width: 1080, height: 1350 },
+    exif: "Edited · 2024"
   }
 ];
 
 export const about: AboutBlock = {
   statement:
-    "Aryan Kumar is a 1st-year BSc Cinematography student at AAFT Delhi, sculpting stories out of light, shadows, and temporal pacing.",
+    "A student cinematographer sculpting stories out of light, shadow, and frame — currently training at AAFT Noida.",
   education:
-    "Asian Academy of Film & Television (AAFT), Noida — 1st Year BSc Cinematography (2025 - Present) / Uttaranchal University — Diploma in Mass Communication & Journalism (2022 - 2025)",
+    "Asian Academy of Film & Television (AAFT), Noida — BSc Cinematography (2025 - Present) / Uttaranchal University — Diploma in Mass Communication & Journalism (2022 - 2025)",
   experience: [
     {
       title: "Lead Photographer / UU Fest",

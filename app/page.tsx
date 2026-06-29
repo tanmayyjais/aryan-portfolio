@@ -4,7 +4,7 @@ import { SelectedWorksSection } from "@/components/selected-works-section";
 import { GallerySection } from "@/components/gallery-section";
 import { InstagramSection } from "@/components/instagram-section";
 import { ProcessSection } from "@/components/process-section";
-import { SkillsSection } from "@/components/skills-section";
+import { ServicesSection } from "@/components/services-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
@@ -19,7 +19,7 @@ export default function HomePage() {
       <GallerySection />
       <InstagramSection />
       <ProcessSection />
-      <SkillsSection />
+      <ServicesSection />
       <ContactSection />
       <Footer />
     </main>

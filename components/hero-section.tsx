@@ -16,13 +16,18 @@ export function HeroSection() {
 
   const { displayText, isFinished } = useTypewriter({
     phrases: [
-      "Hi, I'm Aryan Kumar.",
+      "I'm Aryan Kumar.",
       "I'm a Cinematographer.",
       "I'm a Filmmaker.",
       "I'm a Director.",
       "I'm a Visual Storyteller.",
-      "I'm a Photographer."
-    ]
+      "I'm a Photographer.",
+    ],
+    typingSpeed: 90,
+    erasingSpeed: 22,
+    pauseDuration: 2200,
+    finalHoldDuration: 3500,
+    firstPhrasePause: 3800,
   });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
@@ -39,12 +44,13 @@ export function HeroSection() {
       {/* Ken Burns parallax background */}
       <motion.div
         className="absolute inset-[-5%] z-0"
-        style={{ x: imgX, y: imgY }}
+        style={{ x: imgX, y: imgY, willChange: "transform" }}
       >
         <motion.div
           className="absolute inset-0"
           animate={{ scale: [1, 1.06, 1] }}
           transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+          style={{ willChange: "transform" }}
         >
           <Image
             src="/media/personal/media__1782677888374.jpg"
@@ -84,7 +90,7 @@ export function HeroSection() {
         <div className="font-mono text-[0.6rem] tracking-[0.22em] uppercase text-[#f5f0e8]/35 flex gap-5">
           <span>AAFT Noida</span>
           <span className="text-[#f5f0e8]/15">/</span>
-          <span>BSc Cinematography</span>
+          <span>Student Cinematographer</span>
         </div>
       </div>
 
@@ -102,16 +108,20 @@ export function HeroSection() {
             <span className="eyebrow">Cinematographer · Filmmaker · Visual Storyteller</span>
           </motion.div>
 
-          {/* Letter-by-letter title -> Typewriter animation */}
-          <div aria-live="polite" aria-label="Hi, I'm Aryan Kumar. I'm a Cinematographer, Filmmaker, Director, Visual Storyteller, and Photographer.">
-            <h1 className="font-display font-black leading-[0.9] tracking-[-0.02em] text-[#f5f0e8] min-h-[2.5em] md:min-h-[1.8em]"
-              style={{ fontSize: "clamp(3.2rem, 8vw, 7.5rem)" }}
+          {/* Typewriter title */}
+          <div
+            aria-live="polite"
+            aria-label="I'm Aryan Kumar. I'm a Cinematographer, Filmmaker, Director, Visual Storyteller, and Photographer."
+          >
+            <h1
+              className="font-display font-black leading-[1] tracking-[-0.02em] text-[#f5f0e8] whitespace-nowrap overflow-hidden"
+              style={{ fontSize: "clamp(2.4rem, 6.5vw, 6.5rem)" }}
             >
               {displayText}
               <motion.span
                 animate={{ opacity: isFinished ? 0 : [1, 0, 1] }}
                 transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                className="inline-block ml-2 w-[5px] h-[0.75em] bg-[#c9a96e] align-middle"
+                className="inline-block ml-2 w-[4px] h-[0.75em] bg-[#c9a96e] align-middle"
               />
             </h1>
           </div>
@@ -127,7 +137,7 @@ export function HeroSection() {
               &ldquo;I don&apos;t just shoot frames — I build worlds within them.&rdquo;
             </p>
             <p className="font-mono text-[0.68rem] tracking-[0.24em] uppercase text-[#f5f0e8]/40">
-              BSc Cinematography · AAFT Noida · 2025
+              Student Cinematographer · AAFT Noida · 2025
             </p>
           </motion.div>
 

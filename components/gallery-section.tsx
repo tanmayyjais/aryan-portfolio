@@ -191,7 +191,29 @@ export function GallerySection() {
                     width={1400}
                     height={900}
                     className="object-contain max-h-[80vh] w-auto rounded-lg"
+                    priority
                   />
+                  {/* Preload adjacent images for instant navigation */}
+                  {lightboxIndex > 0 && (
+                    <Image
+                      src={filtered[lightboxIndex - 1].src}
+                      alt=""
+                      width={1}
+                      height={1}
+                      className="opacity-0 absolute w-0 h-0"
+                      aria-hidden
+                    />
+                  )}
+                  {lightboxIndex < filtered.length - 1 && (
+                    <Image
+                      src={filtered[lightboxIndex + 1].src}
+                      alt=""
+                      width={1}
+                      height={1}
+                      className="opacity-0 absolute w-0 h-0"
+                      aria-hidden
+                    />
+                  )}
                 </motion.div>
               </AnimatePresence>
               <div className="text-center space-y-1">

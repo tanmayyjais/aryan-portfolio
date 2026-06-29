@@ -4,17 +4,17 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export function CinematicLoader() {
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(3);
   const [clapped, setClapped] = useState(false);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     if (count > 1) {
-      const t = setTimeout(() => setCount(c => c - 1), 420);
+      const t = setTimeout(() => setCount(c => c - 1), 320);
       return () => clearTimeout(t);
     }
-    const clap = setTimeout(() => setClapped(true), 420);
-    const exit = setTimeout(() => setVisible(false), 950);
+    const clap = setTimeout(() => setClapped(true), 320);
+    const exit = setTimeout(() => setVisible(false), 820);
     return () => { clearTimeout(clap); clearTimeout(exit); };
   }, [count]);
 
@@ -23,7 +23,7 @@ export function CinematicLoader() {
       {visible && (
         <motion.div
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#070707] select-none overflow-hidden"
-          exit={{ opacity: 0, transition: { duration: 0.55, ease: "easeInOut" } }}
+          exit={{ opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } }}
         >
           {/* Scanlines */}
           <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
@@ -54,11 +54,11 @@ export function CinematicLoader() {
                 <div className="absolute inset-0 flex justify-center">
                   <div className="h-full w-[1px] bg-[#f5f0e8]/08" />
                 </div>
-                {/* Sweeper */}
+                {/* Sweeper arc */}
                 <motion.div
                   className="absolute inset-0 rounded-full border-t-2 border-[#c9a96e]"
                   animate={{ rotate: 360 }}
-                  transition={{ repeat: Infinity, duration: 0.42, ease: "linear" }}
+                  transition={{ repeat: Infinity, duration: 0.32, ease: "linear" }}
                 />
                 {/* Number */}
                 <AnimatePresence mode="wait">
@@ -67,7 +67,7 @@ export function CinematicLoader() {
                     initial={{ opacity: 0, scale: 0.6 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.4 }}
-                    transition={{ duration: 0.12 }}
+                    transition={{ duration: 0.1 }}
                     className="font-display text-8xl font-bold text-[#f5f0e8] z-10"
                   >
                     {count}
@@ -99,7 +99,7 @@ export function CinematicLoader() {
                 <line x1="85" y1="48" x2="97" y2="65" />
                 <motion.g
                   initial={{ rotate: -28 }} animate={{ rotate: 0 }}
-                  transition={{ duration: 0.13, ease: "easeIn" }}
+                  transition={{ duration: 0.12, ease: "easeIn" }}
                   style={{ originX: "10px", originY: "48px" }}
                 >
                   <polygon points="10,35 110,35 105,48 10,48" />

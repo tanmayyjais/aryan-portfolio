@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface UseTypewriterOptions {
   phrases: string[];
@@ -7,70 +7,74 @@ interface UseTypewriterOptions {
   pauseDuration?: number;
   finalHoldDuration?: number;
   initialDelay?: number;
+  firstPhrasePause?: number;
 }
 
 export function useTypewriter({
   phrases,
-  typingSpeed = 65,
-  erasingSpeed = 30,
-  pauseDuration = 800,
-  finalHoldDuration = 1200,
+  typingSpeed = 90,
+  erasingSpeed = 22,
+  pauseDuration = 2200,
+  finalHoldDuration = 3500,
   initialDelay = 600,
+  firstPhrasePause = 3800,
 }: UseTypewriterOptions) {
   const [displayText, setDisplayText] = useState("");
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
     if (!hasStarted) {
-      timeout = setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         setHasStarted(true);
         setIsTyping(true);
       }, initialDelay);
-      return () => clearTimeout(timeout);
+      return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
     }
 
     const currentPhrase = phrases[phraseIndex];
 
     if (isTyping) {
       if (displayText.length < currentPhrase.length) {
-        // Typing
-        timeout = setTimeout(() => {
+        // Typing — slight human randomness
+        const jitter = Math.random() * 18 - 9;
+        timeoutRef.current = setTimeout(() => {
           setDisplayText(currentPhrase.substring(0, displayText.length + 1));
-        }, typingSpeed + (Math.random() * 20 - 10)); // Add slight randomness for human feel
+        }, typingSpeed + jitter);
       } else {
-        // Finished typing the current phrase
+        // Done typing — decide hold duration
         if (phraseIndex === phrases.length - 1) {
           setIsFinished(true);
-          // Loop back to start after a longer hold
-          timeout = setTimeout(() => {
+          timeoutRef.current = setTimeout(() => {
             setIsFinished(false);
             setIsTyping(false);
           }, finalHoldDuration);
         } else {
-          timeout = setTimeout(() => {
+          // First phrase gets extra long hold so user reads "I'm Aryan Kumar."
+          const hold = phraseIndex === 0 ? firstPhrasePause : pauseDuration;
+          timeoutRef.current = setTimeout(() => {
             setIsTyping(false);
-          }, pauseDuration);
+          }, hold);
         }
       }
     } else {
       // Erasing
       if (displayText.length > 0) {
-        timeout = setTimeout(() => {
+        timeoutRef.current = setTimeout(() => {
           setDisplayText(currentPhrase.substring(0, displayText.length - 1));
         }, erasingSpeed);
       } else {
-        // Move to next phrase
         setPhraseIndex((prev) => (prev + 1) % phrases.length);
         setIsTyping(true);
       }
     }
 
-    return () => clearTimeout(timeout);
+    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
   }, [
     displayText,
     isTyping,
@@ -81,6 +85,7 @@ export function useTypewriter({
     erasingSpeed,
     pauseDuration,
     finalHoldDuration,
+    firstPhrasePause,
     initialDelay,
   ]);
 

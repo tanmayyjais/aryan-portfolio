@@ -9,10 +9,27 @@ import { Reveal } from "@/components/reveal";
 
 const FILMS = [
   {
+    id: "the-butchers-menu",
+    youtubeId: "POCzq-AF2Ig",
+    title: "The Butcher's Menu",
+    genre: "Short Film",
+    role: "Director · Cinematographer · Editor",
+    year: "2025",
+    runtime: "~5 min",
+    thumbnail: "/media/films/film-2/film-2-poster.jpg",
+    synopsis: "A visceral short film exploring hunger, power, and choice through the lens of a butcher's table. Every frame is deliberately composed to evoke both beauty and unease — a meditation on what it means to consume and be consumed.",
+    credits: [
+      { label: "Direction & Camera", value: "Aryan Kumar" },
+      { label: "Color Grading", value: "Aryan Kumar" },
+      { label: "Production", value: "AAFT Noida" },
+    ],
+    camera: "Sony Mirrorless · 50mm f/1.8 · 4K 24fps",
+  },
+  {
     id: "focal-void",
     youtubeId: "28RcRST1YJM",
     title: "Focal Void",
-    genre: "Psychological Drama",
+    genre: "Short Film",
     role: "Director · Cinematographer · Editor",
     year: "2026",
     runtime: "~8 min",
@@ -25,22 +42,6 @@ const FILMS = [
       { label: "Production", value: "AAFT Noida" },
     ],
     camera: "Sony Mirrorless · 24mm Prime · DaVinci Resolve",
-  },
-  {
-    id: "film-2",
-    youtubeId: "POCzq-AF2Ig",
-    title: "Visual Study II",
-    genre: "Experimental Short",
-    role: "Cinematographer · Director",
-    year: "2025",
-    runtime: "~5 min",
-    thumbnail: "/media/films/film-2/film-2-poster.jpg",
-    synopsis: "An experimental exploration of spatial depth and color temperature. Frames built to feel like photographs that breathe — each shot a meditation on time standing still.",
-    credits: [
-      { label: "Direction & Camera", value: "Aryan Kumar" },
-      { label: "Color Grading", value: "Aryan Kumar" },
-    ],
-    camera: "Sony Mirrorless · 50mm f/1.8 · 4K 24fps",
   },
 ];
 

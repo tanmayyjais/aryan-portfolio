@@ -1,6 +1,6 @@
 "use client";
 
-import { Play, Hourglass, Scan, Eye, Layers } from "lucide-react";
+import { Play, Scan, Eye, Layers } from "lucide-react";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { MediaModal } from "@/components/media-modal";
@@ -223,7 +223,7 @@ function FilmstripCard({ clip, onClick }: { clip: PortfolioEntry; onClick: () =>
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="none"
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
@@ -242,8 +242,7 @@ function FilmstripCard({ clip, onClick }: { clip: PortfolioEntry; onClick: () =>
       </div>
 
       <div className="px-2 pb-2 space-y-1">
-        <span className="text-[0.58rem] uppercase tracking-[0.2em] text-[#b58557] font-semibold flex items-center gap-1">
-          <Hourglass className="h-2.5 w-2.5" />
+        <span className="text-[0.58rem] uppercase tracking-[0.2em] text-[#b58557] font-semibold">
           {clip.sourceLabel}
         </span>
         <h3 className="font-display text-xl text-[#ece9e2] truncate group-hover:text-[#b58557] transition">

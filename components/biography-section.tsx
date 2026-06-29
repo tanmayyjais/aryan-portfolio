@@ -6,21 +6,20 @@ import { useRef, useEffect, useState } from "react";
 import { Reveal } from "@/components/reveal";
 import { about, contact } from "@/lib/site-data";
 
-// All available images for the filmstrip marquee
+// All available images for the filmstrip marquee — deduplicated, varied
 const MARQUEE_IMAGES = [
   "/media/photography/editorial-01.jpg",
-  "/media/drive_pull/Portfolio content/Fashion/IMG_2108 (1) (1).jpeg",
+  "/media/drive_new/roots/IMG_20241026_031024.jpg",
   "/media/reels/ten-shot-01.jpg",
   "/media/photography/editorial-03.jpg",
-  "/media/drive_pull/Portfolio content/Fashion/IMG_2147 (1).jpeg",
-  "/media/reels/intellectual-01.jpg",
-  "/media/photography/editorial-05.jpg",
   "/media/drive_pull/Portfolio content/Fashion/IMG_2152 (1).jpeg",
-  "/media/reels/montage-01.jpg",
+  "/media/reels/intellectual-02.jpg",
+  "/media/drive_new/roots/IMG_20241026_031408.jpg",
+  "/media/reels/montage-02.jpg",
   "/media/photography/editorial-02.jpg",
-  "/media/drive_pull/Portfolio content/Fashion/IMG_2157 (1).jpeg",
-  "/media/reels/ten-shot-02.jpg",
+  "/media/drive_new/roots/IMG_20241026_031603.jpg",
   "/media/personal/media__1782677888145.jpg",
+  "/media/drive_new/roots/IMG_20241026_031629.jpg",
 ];
 
 const STATS = [
@@ -57,10 +56,10 @@ function AnimatedStat({ value, suffix, label }: { value: number; suffix: string;
 export function BiographySection() {
   return (
     <section id="about" className="relative overflow-hidden bg-[#0a0a0a] border-b border-[#f5f0e8]/06">
-      {/* Filmstrip Marquee BG */}
+      {/* Filmstrip Marquee BG — double repeat only (lighter DOM) */}
       <div className="absolute inset-0 z-0 flex flex-col justify-center overflow-hidden opacity-[0.07] select-none pointer-events-none">
         <div className="flex gap-4 marquee-track whitespace-nowrap">
-          {[...MARQUEE_IMAGES, ...MARQUEE_IMAGES, ...MARQUEE_IMAGES].map((src, i) => (
+          {[...MARQUEE_IMAGES, ...MARQUEE_IMAGES].map((src, i) => (
             <div key={i} className="relative flex-shrink-0 w-52 h-72 overflow-hidden rounded-lg">
               <Image src={src} alt="" fill sizes="208px" className="object-cover" />
             </div>
@@ -81,14 +80,17 @@ export function BiographySection() {
               <h2 className="section-title">About Me</h2>
 
               <p className="font-body text-base leading-8 text-[#f5f0e8]/65 max-w-xl">
-                I don&apos;t just shoot frames — I build worlds within them. Currently shaping my craft at{" "}
-                <strong className="text-[#f5f0e8] font-semibold">AAFT Noida</strong>, I believe
-                cinematography is the language where light speaks and silence screams.
+                I&apos;m Aryan Kumar — a student cinematographer at{" "}
+                <strong className="text-[#f5f0e8] font-semibold">AAFT Noida</strong> who sees every
+                frame as a question and every edit as an answer. I don&apos;t just shoot — I sculpt
+                light into emotion, build worlds within single takes, and obsess over what the human
+                eye misses when it moves too fast.
               </p>
               <p className="font-body text-base leading-8 text-[#f5f0e8]/55 max-w-xl">
-                {about.statement} With a background in mass communication and an obsession for
-                visual storytelling, every frame I shoot is a question about what the human eye
-                really sees when it&apos;s allowed to slow down.
+                Cinematography isn&apos;t a career path for me — it&apos;s the language I think in.
+                With a background in mass communication and a deep obsession for visual storytelling,
+                every frame I shoot is a deliberate choice about what to show, and what to leave in
+                the dark.
               </p>
               <p className="font-mono text-[0.68rem] tracking-[0.18em] text-[#f5f0e8]/35 uppercase">
                 {about.education}
@@ -123,7 +125,7 @@ export function BiographySection() {
             </Reveal>
           </div>
 
-          {/* Portrait column */}
+          {/* Portrait column — object-top so face isn't cropped on PC */}
           <Reveal delay={0.1} className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border border-[#f5f0e8]/06 bg-[#0d0d0d] group">
             <motion.div
               className="absolute inset-0"
@@ -135,7 +137,7 @@ export function BiographySection() {
                 alt="Aryan Kumar — Portrait"
                 fill
                 sizes="(min-width: 1024px) 35vw, 100vw"
-                className="object-cover object-center brightness-90 contrast-105"
+                className="object-cover object-top brightness-90 contrast-105"
               />
             </motion.div>
             {/* Cinematic overlay bars */}

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { Send, CheckCircle2, Mail, Instagram, Youtube, Linkedin } from "lucide-react";
+import { Send, CheckCircle2, Mail, Instagram, Youtube, Linkedin, ChevronDown } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { contact } from "@/lib/site-data";
 
@@ -17,6 +17,68 @@ const SOCIALS = [
   { icon: Youtube, label: "YouTube", href: contact.youtube, value: "DRISHTIIKAAR" },
   { icon: Linkedin, label: "LinkedIn", href: contact.linkedin, value: "aryannkumar" },
 ];
+
+// Custom dark-themed dropdown — avoids browser native white select on PC
+function DarkSelect({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Close on outside click
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  const selected = PROJECT_TYPES.find(t => t === value) ?? null;
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen(o => !o)}
+        className="form-field flex items-center justify-between w-full text-left cursor-none"
+        data-cursor="hover"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <span className={selected ? "text-[#f5f0e8]/90" : "text-[#f5f0e8]/25"}>
+          {selected ?? "Select project type"}
+        </span>
+        <ChevronDown
+          className={`h-4 w-4 text-[#f5f0e8]/30 flex-shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      {open && (
+        <div
+          role="listbox"
+          className="absolute top-full left-0 right-0 z-50 mt-1 bg-[#111111] border border-[#f5f0e8]/10 rounded-xl overflow-hidden shadow-2xl"
+        >
+          {PROJECT_TYPES.map(t => (
+            <button
+              key={t}
+              type="button"
+              role="option"
+              aria-selected={value === t}
+              onClick={() => { onChange(t); setOpen(false); }}
+              className={`w-full text-left px-4 py-3 font-body text-sm transition-colors duration-150 cursor-none ${
+                value === t
+                  ? "bg-[#c9a96e]/15 text-[#c9a96e]"
+                  : "text-[#f5f0e8]/70 hover:bg-[#f5f0e8]/05 hover:text-[#f5f0e8]"
+              }`}
+              data-cursor="hover"
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function ContactSection() {
   const [sent, setSent] = useState(false);
@@ -124,12 +186,8 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="font-mono text-[0.58rem] tracking-[0.2em] uppercase text-[#f5f0e8]/35 block mb-1">Project Type</label>
-                    <select value={form.projectType} onChange={e => setForm({...form, projectType: e.target.value})}
-                      className="form-field appearance-none" data-cursor="hover">
-                      <option value="" disabled>Select project type</option>
-                      {PROJECT_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
-                    </select>
+                    <label className="font-mono text-[0.58rem] tracking-[0.2em] uppercase text-[#f5f0e8]/35 block mb-2">Project Type</label>
+                    <DarkSelect value={form.projectType} onChange={v => setForm({...form, projectType: v})} />
                   </div>
 
                   <div>
