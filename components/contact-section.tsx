@@ -102,8 +102,8 @@ export function ContactSection() {
             email: form.email,
             message: form.message,
             project_type: form.projectType,
-            subject: `New Contact Form Inquiry from ${form.name}`,
-            from_name: "Aryan Kumar Portfolio",
+            subject: `Client Portfolio Inquiry: ${form.name}`,
+            from_name: "Client Portfolio Inquiry",
           }),
         });
         const result = await response.json();
