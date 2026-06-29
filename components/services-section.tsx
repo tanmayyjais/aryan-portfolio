@@ -1,11 +1,12 @@
 "use client";
 
-import { Clapperboard, Aperture, Scissors, PenTool } from "lucide-react";
+import { Clapperboard, Aperture, Scissors, PenTool, Camera } from "lucide-react";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/reveal";
 import { services } from "@/lib/site-data";
 
 const ICONS: Record<string, React.ReactNode> = {
+  photography: <Camera className="h-7 w-7 text-[#c9a96e]" />,
   direction: <Clapperboard className="h-7 w-7 text-[#c9a96e]" />,
   cinematography: <Aperture className="h-7 w-7 text-[#c9a96e]" />,
   editing: <Scissors className="h-7 w-7 text-[#c9a96e]" />,
@@ -29,10 +30,10 @@ export function ServicesSection() {
           </div>
         </Reveal>
 
-        {/* Service Cards */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Service Cards (Horizontal scroll on mobile, grid on desktop) */}
+        <div className="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory scrollbar-thin md:grid md:grid-cols-2 lg:grid-cols-5 md:overflow-visible md:pb-0">
           {services.map((service, index) => (
-            <Reveal key={service.id} delay={index * 0.09}>
+            <Reveal key={service.id} delay={index * 0.09} className="flex-shrink-0 w-[290px] snap-start md:w-full">
               <motion.div
                 className="group flex flex-col justify-between h-full bg-[#0d0d0d] border border-[#f5f0e8]/06 rounded-2xl p-6 transition-all duration-300 hover:border-[#c9a96e]/30 hover:bg-[#0f0f0f] shadow-lg"
                 whileHover={{ y: -4 }}

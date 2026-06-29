@@ -441,10 +441,10 @@ export const about: AboutBlock = {
 
 export const services = [
   {
-    id: "direction",
-    title: "Direction",
-    description: "Developing visual concepts, storyboards, and blocking styles. Organizing thematic mood boards and translating textual beats into distinct emotional rhythms on set.",
-    gear: "Treatment Decks • Moodboards • Screenplay Assembly • Shot-listing",
+    id: "photography",
+    title: "Photography & Portraits",
+    description: "Capturing high-contrast, premium editorial fashion and lifestyle portraiture. Expert in utilizing natural light, framing, and capturing raw character expressions.",
+    gear: "Sony Mirrorless • 85mm Prime • f/1.8 • Adobe Lightroom color grading",
   },
   {
     id: "cinematography",
@@ -463,6 +463,12 @@ export const services = [
     title: "Writing",
     description: "Crafting atmospheric screenplay structures, character arcs, and punchy thematic concepts designed for visual-first storytelling.",
     gear: "Final Draft • Celtx • Visual Treatment Outlines",
+  },
+  {
+    id: "direction",
+    title: "Direction",
+    description: "Developing visual concepts, storyboards, and blocking styles. Organizing thematic mood boards and translating textual beats into distinct emotional rhythms on set.",
+    gear: "Treatment Decks • Moodboards • Screenplay Assembly • Shot-listing",
   },
 ];
 

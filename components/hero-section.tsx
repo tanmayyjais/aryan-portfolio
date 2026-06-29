@@ -58,7 +58,7 @@ export function HeroSection() {
             fill
             priority
             sizes="110vw"
-            className="object-cover object-[center_12%] brightness-[0.4] opacity-70 contrast-110"
+            className="object-cover object-[center_28%] brightness-[0.4] opacity-70 contrast-110"
           />
         </motion.div>
       </motion.div>
@@ -66,9 +66,6 @@ export function HeroSection() {
       {/* Gradient overlay */}
       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#070707] via-[#070707]/60 to-[#070707]/30" />
       <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#070707]/80 via-transparent to-[#070707]/40" />
-
-      {/* Film grain */}
-      <div className="grain-overlay animate-grain pointer-events-none fixed inset-[-200%] z-[2]" />
 
       {/* Top bar */}
       <div className="relative z-10 flex items-center justify-between px-6 py-5 md:px-12 border-b border-[#f5f0e8]/05 bg-black/30 backdrop-blur-sm">
