@@ -58,7 +58,7 @@ export function CinematicLoader() {
                 <motion.div
                   className="absolute inset-0 rounded-full border-t-2 border-[#c9a96e]"
                   animate={{ rotate: 360 }}
-                  transition={{ repeat: Infinity, duration: 0.32, ease: "linear" }}
+                  transition={{ repeat: Infinity, duration: 0.9, ease: "linear" }}
                 />
                 {/* Number */}
                 <AnimatePresence mode="wait">

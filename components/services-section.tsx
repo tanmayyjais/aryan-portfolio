@@ -31,9 +31,9 @@ export function ServicesSection() {
         </Reveal>
 
         {/* Service Cards (Horizontal scroll on mobile, grid on desktop) */}
-        <div className="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory scrollbar-thin md:grid md:grid-cols-2 lg:grid-cols-5 md:overflow-visible md:pb-0">
+        <div className="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory scrollbar-thin px-6 md:px-0 -mx-6 md:mx-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0">
           {services.map((service, index) => (
-            <Reveal key={service.id} delay={index * 0.09} className="flex-shrink-0 w-[290px] snap-start md:w-full">
+            <Reveal key={service.id} delay={index * 0.09} className="flex-shrink-0 w-[280px] snap-center md:w-full">
               <motion.div
                 className="group flex flex-col justify-between h-full bg-[#0d0d0d] border border-[#f5f0e8]/06 rounded-2xl p-6 transition-all duration-300 hover:border-[#c9a96e]/30 hover:bg-[#0f0f0f] shadow-lg"
                 whileHover={{ y: -4 }}

@@ -111,10 +111,10 @@ export function HeroSection() {
             aria-label="I'm Aryan Kumar. I'm a Cinematographer, Filmmaker, Director, Visual Storyteller, and Photographer."
           >
             <h1
-              className="font-display font-black leading-[1] tracking-[-0.02em] text-[#f5f0e8] whitespace-nowrap overflow-hidden"
-              style={{ fontSize: "clamp(2rem, 5vw, 5.2rem)" }}
+              className="font-display font-black leading-[1.1] tracking-[-0.02em] text-[#f5f0e8] flex flex-wrap items-center"
+              style={{ fontSize: "clamp(1.75rem, 6.5vw, 4.5rem)" }}
             >
-              I&apos;m{" "}
+              <span className="mr-2">I&apos;m</span>
               <span className="text-[#f5f0e8]">{displayText}</span>
               <motion.span
                 animate={{ opacity: isFinished ? 0 : [1, 0, 1] }}
