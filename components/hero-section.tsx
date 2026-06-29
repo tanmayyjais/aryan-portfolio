@@ -114,7 +114,7 @@ export function HeroSection() {
               className="font-display font-black leading-[1.1] tracking-[-0.02em] text-[#f5f0e8] flex flex-wrap items-center"
               style={{ fontSize: "clamp(1.75rem, 6.5vw, 4.5rem)" }}
             >
-              <span className="mr-2">I&apos;m</span>
+              <span className="mr-[0.3em]">I&apos;m</span>
               <span className="text-[#f5f0e8]">{displayText}</span>
               <motion.span
                 animate={{ opacity: isFinished ? 0 : [1, 0, 1] }}

@@ -5,6 +5,7 @@ import "./globals.css";
 import { CinematicLoader } from "@/components/cinematic-loader";
 import { FilmGrain } from "@/components/film-grain";
 import { CinematicCursor } from "@/components/cursor-spotlight";
+import { Navigation } from "@/components/navigation";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -67,6 +68,7 @@ export default function RootLayout({
         <CinematicLoader />
         <FilmGrain />
         <CinematicCursor />
+        <Navigation />
         {children}
       </body>
     </html>
