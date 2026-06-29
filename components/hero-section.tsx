@@ -16,12 +16,12 @@ export function HeroSection() {
 
   const { displayText, isFinished } = useTypewriter({
     phrases: [
-      "I'm Aryan Kumar.",
-      "I'm a Cinematographer.",
-      "I'm a Filmmaker.",
-      "I'm a Director.",
-      "I'm a Visual Storyteller.",
-      "I'm a Photographer.",
+      "Aryan Kumar.",
+      "a Cinematographer.",
+      "a Filmmaker.",
+      "a Director.",
+      "a Visual Storyteller.",
+      "a Photographer.",
     ],
     typingSpeed: 90,
     erasingSpeed: 22,
@@ -58,7 +58,7 @@ export function HeroSection() {
             fill
             priority
             sizes="110vw"
-            className="object-cover object-center brightness-[0.4] opacity-70 contrast-110"
+            className="object-cover object-[center_12%] brightness-[0.4] opacity-70 contrast-110"
           />
         </motion.div>
       </motion.div>
@@ -96,7 +96,7 @@ export function HeroSection() {
 
       {/* Main content */}
       <div className="relative z-10 flex flex-col justify-center flex-grow px-6 py-16 md:px-16">
-        <div className="max-w-5xl space-y-8">
+        <div className="max-w-6xl w-full space-y-8">
           {/* Eyebrow */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -115,9 +115,10 @@ export function HeroSection() {
           >
             <h1
               className="font-display font-black leading-[1] tracking-[-0.02em] text-[#f5f0e8] whitespace-nowrap overflow-hidden"
-              style={{ fontSize: "clamp(2.4rem, 6.5vw, 6.5rem)" }}
+              style={{ fontSize: "clamp(2rem, 5vw, 5.2rem)" }}
             >
-              {displayText}
+              I&apos;m{" "}
+              <span className="text-[#f5f0e8]">{displayText}</span>
               <motion.span
                 animate={{ opacity: isFinished ? 0 : [1, 0, 1] }}
                 transition={{ repeat: Infinity, duration: 1, ease: "linear" }}

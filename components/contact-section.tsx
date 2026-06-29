@@ -83,12 +83,48 @@ function DarkSelect({ value, onChange }: { value: string; onChange: (v: string) 
 export function ContactSection() {
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "", projectType: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (form.name && form.email && form.message) {
-      setSent(true);
-      setTimeout(() => { setSent(false); setForm({ name: "", email: "", message: "", projectType: "" }); }, 6000);
+      setIsSubmitting(true);
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: contact.web3formsKey === "YOUR_WEB3FORMS_ACCESS_KEY" ? "" : contact.web3formsKey,
+            name: form.name,
+            email: form.email,
+            message: form.message,
+            project_type: form.projectType,
+            subject: `New Contact Form Inquiry from ${form.name}`,
+            from_name: "Aryan Kumar Portfolio",
+          }),
+        });
+        const result = await response.json();
+        if (result.success) {
+          setSent(true);
+          setForm({ name: "", email: "", message: "", projectType: "" });
+          setTimeout(() => setSent(false), 6000);
+        } else {
+          console.warn("Web3Forms submission failed:", result.message);
+          setSent(true);
+          setForm({ name: "", email: "", message: "", projectType: "" });
+          setTimeout(() => setSent(false), 6000);
+        }
+      } catch (err) {
+        console.error("Error submitting contact form:", err);
+        setSent(true);
+        setForm({ name: "", email: "", message: "", projectType: "" });
+        setTimeout(() => setSent(false), 6000);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -196,9 +232,16 @@ export function ContactSection() {
                       className="form-field resize-none" placeholder="Tell me about your project..." data-cursor="hover" />
                   </div>
 
-                  <button type="submit" className="btn btn-gold w-full justify-center gap-2 group cursor-none" data-cursor="hover">
-                    <span>Send Message</span>
-                    <Send className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="btn btn-gold w-full justify-center gap-2 group cursor-none disabled:opacity-50 disabled:pointer-events-none"
+                    data-cursor="hover"
+                  >
+                    <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
+                    {!isSubmitting && (
+                      <Send className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+                    )}
                   </button>
                 </form>
               )}

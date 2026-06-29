@@ -473,6 +473,7 @@ export const contact = {
   youtube: "https://www.youtube.com/@aaryannnk",
   linkedin: "https://www.linkedin.com/in/aryannkumar/",
   resume: "/media/resume/aryan-kumar-resume.pdf",
+  web3formsKey: "YOUR_WEB3FORMS_ACCESS_KEY", // Get a free key at web3forms.com
 };
 
 export const socialLinks: ContactLink[] = [

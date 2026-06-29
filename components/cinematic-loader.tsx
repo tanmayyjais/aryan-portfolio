@@ -10,11 +10,11 @@ export function CinematicLoader() {
 
   useEffect(() => {
     if (count > 1) {
-      const t = setTimeout(() => setCount(c => c - 1), 320);
+      const t = setTimeout(() => setCount(c => c - 1), 900);
       return () => clearTimeout(t);
     }
-    const clap = setTimeout(() => setClapped(true), 320);
-    const exit = setTimeout(() => setVisible(false), 820);
+    const clap = setTimeout(() => setClapped(true), 900);
+    const exit = setTimeout(() => setVisible(false), 2200);
     return () => { clearTimeout(clap); clearTimeout(exit); };
   }, [count]);
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Film, Clapperboard, ExternalLink } from "lucide-react";
@@ -47,6 +47,17 @@ const FILMS = [
 
 function FilmCard({ film }: { film: typeof FILMS[0] }) {
   const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    if (playing) {
+      document.body.classList.add("hide-cursor");
+    } else {
+      document.body.classList.remove("hide-cursor");
+    }
+    return () => {
+      document.body.classList.remove("hide-cursor");
+    };
+  }, [playing]);
 
   return (
     <Reveal>
@@ -108,7 +119,14 @@ function FilmCard({ film }: { film: typeof FILMS[0] }) {
                 </div>
               </motion.div>
             ) : (
-              <motion.div key="player" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="absolute inset-0 bg-black">
+              <motion.div
+                key="player"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="absolute inset-0 bg-black"
+                onMouseEnter={() => document.body.classList.add("hide-cursor")}
+                onMouseLeave={() => document.body.classList.remove("hide-cursor")}
+              >
                 <YouTube
                   videoId={film.youtubeId}
                   className="w-full h-full"

@@ -41,13 +41,9 @@ export function InstagramSection() {
         <Reveal>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
             {INSTAGRAM_POSTS.map((post, i) => (
-              <motion.a
+              <motion.div
                 key={i}
-                href={post.href}
-                target="_blank"
-                rel="noreferrer"
                 className="group relative aspect-square overflow-hidden rounded-xl border border-[#f5f0e8]/05 bg-[#111] block cursor-none"
-                data-cursor="hover"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -66,13 +62,7 @@ export function InstagramSection() {
                   <p className="font-mono text-[0.58rem] tracking-wider uppercase text-white/80">{post.label}</p>
                   <p className="font-mono text-[0.55rem] text-white/50 mt-1">{post.views} views</p>
                 </div>
-                {/* Reel indicator */}
-                <div className="absolute top-2 right-2 opacity-70">
-                  <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white">
-                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
-                  </svg>
-                </div>
-              </motion.a>
+              </motion.div>
             ))}
           </div>
         </Reveal>
