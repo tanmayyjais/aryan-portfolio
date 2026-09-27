@@ -22,7 +22,7 @@ export function InstagramSection() {
       <div className="shell space-y-12">
         <div className="label-row">
           <div className="space-y-2">
-            <span className="eyebrow">Instagram · @drishtiikaar</span>
+            <span className="eyebrow">Instagram · <a href="https://www.youtube.com/@aaryannnk" target="_blank" rel="noreferrer" className="text-[#c9a96e] hover:underline cursor-pointer" data-cursor="hover">@drishtiikaar</a></span>
             <h2 className="section-title">Moments Between Takes</h2>
           </div>
           <a
@@ -41,8 +41,11 @@ export function InstagramSection() {
         <Reveal>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
             {INSTAGRAM_POSTS.map((post, i) => (
-              <motion.div
+              <motion.a
                 key={i}
+                href={post.href}
+                target="_blank"
+                rel="noreferrer"
                 className="group relative aspect-square overflow-hidden rounded-xl border border-[#f5f0e8]/05 bg-[#111] block cursor-none"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +65,7 @@ export function InstagramSection() {
                   <p className="font-mono text-[0.58rem] tracking-wider uppercase text-white/80">{post.label}</p>
                   <p className="font-mono text-[0.55rem] text-white/50 mt-1">{post.views} views</p>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </Reveal>

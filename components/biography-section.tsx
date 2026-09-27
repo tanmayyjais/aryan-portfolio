@@ -133,7 +133,7 @@ export function BiographySection() {
               transition={{ duration: 1.4, ease: [0.43, 0.13, 0.23, 0.96] }}
             >
               <Image
-                src="/media/personal/media__1782677888107.jpg"
+                src="/media/hero/dolly-track.jpg"
                 alt="Aryan Kumar — Portrait"
                 fill
                 sizes="(min-width: 1024px) 35vw, 100vw"
