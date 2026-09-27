@@ -8,12 +8,12 @@ import { Reveal } from "@/components/reveal";
 // Since we can't authenticate the API without a token, we use the profile grid approach
 // and link directly to the Instagram profile with a visually beautiful presentation
 const INSTAGRAM_POSTS = [
-  { href: "https://www.instagram.com/p/placeholder1/", src: "/media/reels/ten-shot-01.jpg", label: "Composition Study", views: "1.2K" },
-  { href: "https://www.instagram.com/p/placeholder2/", src: "/media/reels/intellectual-01.jpg", label: "Intellectual Montage", views: "890" },
-  { href: "https://www.instagram.com/p/placeholder3/", src: "/media/reels/montage-01.jpg", label: "Rhythm Study", views: "2.1K" },
-  { href: "https://www.instagram.com/p/placeholder4/", src: "/media/photography/editorial-03.jpg", label: "Portrait Series", views: "3.4K" },
-  { href: "https://www.instagram.com/p/placeholder5/", src: "/media/reels/ten-shot-03.jpg", label: "10 Shot Study", views: "1.8K" },
-  { href: "https://www.instagram.com/p/placeholder6/", src: "/media/reels/intellectual-03.jpg", label: "Night Frames", views: "675" },
+  { href: "https://www.instagram.com/drishtiikaar/", src: "/media/gallery-final/img_11.jpeg", label: "@drishtiikaar Profile", views: "Profile" },
+  { href: "https://www.instagram.com/reel/Ddl80CdRmAo/?stkn=MW1mOWlua2NuN2lvMA==", src: "/media/reels/ten-shot-01.jpg", label: "Composition Study", views: "Reel" },
+  { href: "https://www.instagram.com/drishtiikaar/reels/", src: "/media/reels/intellectual-01.jpg", label: "Intellectual Montage", views: "Reel" },
+  { href: "https://www.instagram.com/drishtiikaar/reels/", src: "/media/reels/montage-01.jpg", label: "Rhythm Study", views: "Reel" },
+  { href: "https://www.instagram.com/drishtiikaar/reels/", src: "/media/photography/editorial-03.jpg", label: "Portrait Series", views: "Reel" },
+  { href: "https://www.instagram.com/drishtiikaar/reels/", src: "/media/reels/ten-shot-03.jpg", label: "10 Shot Study", views: "Reel" },
 ];
 
 export function InstagramSection() {

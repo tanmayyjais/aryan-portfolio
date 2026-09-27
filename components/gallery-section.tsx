@@ -10,37 +10,26 @@ type Category = "All" | "Portraits" | "Stills" | "BTS" | "Motion";
 
 const ALL_IMAGES = [
   // Portraits
-  { src: "/media/photography/editorial-01.jpg", caption: "Portrait Study 01", category: "Portraits" as Category, exif: "f/1.8 · ISO 200 · 50mm" },
-  { src: "/media/photography/editorial-02.jpg", caption: "Portrait Study 02", category: "Portraits" as Category, exif: "f/2.0 · ISO 400 · 50mm" },
-  { src: "/media/photography/editorial-03.jpg", caption: "Portrait Study 03", category: "Portraits" as Category, exif: "f/2.2 · ISO 320 · 85mm" },
-  { src: "/media/photography/editorial-04.jpg", caption: "Portrait Study 04", category: "Portraits" as Category, exif: "f/1.8 · ISO 100 · 50mm" },
-  { src: "/media/photography/editorial-05.jpg", caption: "Portrait Study 05", category: "Portraits" as Category, exif: "f/1.8 · ISO 250 · 35mm" },
-  // Drive Fashion Stills
-  { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2108 (1) (1).jpeg", caption: "Fashion Portrait 01", category: "Portraits" as Category, exif: "Editorial Study" },
-  { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2147 (1).jpeg", caption: "Fashion Portrait 02", category: "Portraits" as Category, exif: "Editorial Study" },
-  { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2152 (1).jpeg", caption: "Fashion Portrait 03", category: "Portraits" as Category, exif: "Editorial Study" },
-  { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2157 (1).jpeg", caption: "Fashion Portrait 04", category: "Portraits" as Category, exif: "Editorial Study" },
-  { src: "/media/drive_pull/Portfolio content/Fashion/IMG_2176 (1).jpeg", caption: "Fashion Portrait 05", category: "Portraits" as Category, exif: "Editorial Study" },
-  // Personal
-  { src: "/media/personal/media__1782677888107.jpg", caption: "Cinematographer Portrait", category: "Portraits" as Category, exif: "Self" },
-  { src: "/media/personal/media__1782677888145.jpg", caption: "Cinematographer BTS", category: "BTS" as Category, exif: "On Set" },
-  // Film stills
-  { src: "/media/films/focal-void/still-01.jpg", caption: "Focal Void — Frame 01", category: "Stills" as Category, exif: "Focal Void · 2026" },
-  { src: "/media/films/focal-void/still-02.jpg", caption: "Focal Void — Frame 02", category: "Stills" as Category, exif: "Focal Void · 2026" },
-  { src: "/media/films/focal-void/still-03.jpg", caption: "Focal Void — Frame 03", category: "Stills" as Category, exif: "Focal Void · 2026" },
-  { src: "/media/films/focal-void/poster.jpg",   caption: "Focal Void — Poster", category: "Stills" as Category, exif: "Focal Void · 2026" },
-  { src: "/media/hero/hero-still.jpg",           caption: "Cinematic Still", category: "Stills" as Category, exif: "24mm Prime · f/2.8" },
-  { src: "/media/hero/hero-still-alt.jpg",       caption: "Atmospheric Still", category: "BTS" as Category, exif: "On set · Delhi NCR" },
-  // Motion thumbnails
-  { src: "/media/reels/ten-shot-01.jpg",         caption: "10 Shot Study — 01", category: "Motion" as Category, exif: "Composition Study · 2025" },
-  { src: "/media/reels/ten-shot-02.jpg",         caption: "10 Shot Study — 02", category: "Motion" as Category, exif: "50mm Prime · f/1.8" },
-  { src: "/media/reels/ten-shot-03.jpg",         caption: "10 Shot Study — 03", category: "Motion" as Category, exif: "Deep Staging" },
-  { src: "/media/reels/intellectual-01.jpg",     caption: "Intellectual Montage — 01", category: "Motion" as Category, exif: "Montage Study · 2025" },
-  { src: "/media/reels/intellectual-02.jpg",     caption: "Intellectual Montage — 02", category: "Motion" as Category, exif: "Night Frame · Neon Light" },
-  { src: "/media/reels/intellectual-03.jpg",     caption: "Intellectual Montage — 03", category: "Motion" as Category, exif: "Low Key Lighting" },
-  { src: "/media/reels/montage-01.jpg",          caption: "Rhythm Study — 01", category: "Motion" as Category, exif: "Rapid Cut Study" },
-  { src: "/media/reels/montage-02.jpg",          caption: "Rhythm Study — 02", category: "Motion" as Category, exif: "Pacing Exercise" },
-  { src: "/media/reels/montage-03.jpg",          caption: "Rhythm Study — 03", category: "Motion" as Category, exif: "Velocity Montage" },
+  { src: "/media/gallery-final/img_3.jpg", caption: "Portrait Study 01", category: "Portraits" as Category, exif: "f/1.8 · ISO 200" },
+  { src: "/media/gallery-final/img_5.jpeg", caption: "Portrait Study 02", category: "Portraits" as Category, exif: "Editorial" },
+  { src: "/media/gallery-final/img_6.jpeg", caption: "Portrait Study 03", category: "Portraits" as Category, exif: "Editorial" },
+  { src: "/media/gallery-final/img_7.jpeg", caption: "Portrait Study 04", category: "Portraits" as Category, exif: "Editorial" },
+  { src: "/media/gallery-final/img_8.jpeg", caption: "Portrait Study 05", category: "Portraits" as Category, exif: "Editorial" },
+  { src: "/media/gallery-final/img_9.jpeg", caption: "Portrait Study 06", category: "Portraits" as Category, exif: "Editorial" },
+
+  // Stills
+  { src: "/media/gallery-final/img_1.jpg", caption: "Cinematic Still 01", category: "Stills" as Category, exif: "Frame Study" },
+  { src: "/media/gallery-final/img_2.jpg", caption: "Cinematic Still 02", category: "Stills" as Category, exif: "Frame Study" },
+  { src: "/media/gallery-final/img_4.jpg", caption: "Cinematic Still 03", category: "Stills" as Category, exif: "Frame Study" },
+  { src: "/media/films/focal-void/poster.jpg", caption: "Focal Void Poster", category: "Stills" as Category, exif: "2026" },
+
+  // BTS
+  { src: "/media/personal/media__1782677888145.jpg", caption: "On Set", category: "BTS" as Category, exif: "Director" },
+  
+  // Motion Thumbnails
+  { src: "/media/reels/ten-shot-01.jpg", caption: "10 Shot Study", category: "Motion" as Category, exif: "2025" },
+  { src: "/media/reels/intellectual-01.jpg", caption: "Intellectual Montage", category: "Motion" as Category, exif: "2025" },
+  { src: "/media/reels/montage-01.jpg", caption: "Rhythm Study", category: "Motion" as Category, exif: "2025" },
 ];
 
 const TABS: Category[] = ["All", "Portraits", "Stills", "BTS", "Motion"];

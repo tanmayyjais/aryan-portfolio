@@ -53,7 +53,7 @@ export function HeroSection() {
           style={{ willChange: "transform" }}
         >
           <Image
-            src="/media/personal/media__1782677888374.jpg"
+            src="/media/hero/dolly-track.jpg"
             alt="Cinematic background"
             fill
             priority
