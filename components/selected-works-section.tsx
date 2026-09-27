@@ -91,6 +91,21 @@ const FILMS = [
     ],
     camera: "Sony Mirrorless",
   },
+  {
+    id: "180-rule",
+    youtubeId: "o0f65HXZnZk",
+    title: "180° Rule & Breaking the Axis",
+    genre: "Cinematography Exercise",
+    role: "Cinematographer",
+    year: "2024",
+    runtime: "~1 min",
+    thumbnail: "/media/films/new-yt-video.webp",
+    synopsis: "A study on the 180-degree rule and how breaking the axis can be used for dramatic effect.",
+    credits: [
+      { label: "Cinematography", value: "Aryan Kumar" },
+    ],
+    camera: "Sony Mirrorless",
+  }
 ];
 
 function FilmCard({ film }: { film: typeof FILMS[0] }) {

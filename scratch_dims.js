@@ -1,1 +1,0 @@
-const fs = require('fs'); const path = require('path'); const dir = 'public/media/new_drive'; fs.readdirSync(dir).forEach(f => { const p = path.join(dir, f); if (f.match(/\.(jpg|jpeg|png)$/i)) { const stats = fs.statSync(p); console.log(f, stats.size); } });
