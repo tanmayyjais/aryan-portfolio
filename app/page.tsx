@@ -3,7 +3,6 @@ import { BiographySection } from "@/components/biography-section";
 import { SelectedWorksSection } from "@/components/selected-works-section";
 import { GallerySection } from "@/components/gallery-section";
 import { InstagramSection } from "@/components/instagram-section";
-import { ProcessSection } from "@/components/process-section";
 import { ServicesSection } from "@/components/services-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
@@ -18,7 +17,6 @@ export default function HomePage() {
       <SelectedWorksSection />
       <GallerySection />
       <InstagramSection />
-      <ProcessSection />
       <ServicesSection />
       <ContactSection />
       <Footer />
