@@ -9,7 +9,7 @@ import { Reveal } from "@/components/reveal";
 // and link directly to the Instagram profile with a visually beautiful presentation
 const INSTAGRAM_POSTS = [
   { href: "https://www.instagram.com/drishtiikaar/", src: "/media/gallery-final/img_11.jpeg", label: "@drishtiikaar Profile", views: "Profile" },
-  { href: "https://www.instagram.com/reel/Ddl80CdRmAo/?stkn=MW1mOWlua2NuN2lvMA==", src: "/media/reels/ten-shot-01.jpg", label: "Composition Study", views: "Reel" },
+  { href: "https://www.instagram.com/reel/Ddl80CdRmAo/?stkn=MW1mOWlua2NuN2lvMA==", src: "/media/reels/reel-2.png", label: "Composition Study", views: "Reel" },
   { href: "https://www.instagram.com/drishtiikaar/reels/", src: "/media/reels/intellectual-01.jpg", label: "Intellectual Montage", views: "Reel" },
   { href: "https://www.instagram.com/drishtiikaar/reels/", src: "/media/reels/montage-01.jpg", label: "Rhythm Study", views: "Reel" },
   { href: "https://www.instagram.com/drishtiikaar/reels/", src: "/media/photography/editorial-03.jpg", label: "Portrait Series", views: "Reel" },
@@ -22,7 +22,7 @@ export function InstagramSection() {
       <div className="shell space-y-12">
         <div className="label-row">
           <div className="space-y-2">
-            <span className="eyebrow">Instagram · <a href="https://www.youtube.com/@aaryannnk" target="_blank" rel="noreferrer" className="text-[#c9a96e] hover:underline cursor-pointer" data-cursor="hover">@drishtiikaar</a></span>
+            <span className="eyebrow">Instagram · <a href="https://www.instagram.com/drishtiikaar/" target="_blank" rel="noreferrer" className="text-[#c9a96e] hover:underline cursor-pointer" data-cursor="hover">@drishtiikaar</a></span>
             <h2 className="section-title">Moments Between Takes</h2>
           </div>
           <a

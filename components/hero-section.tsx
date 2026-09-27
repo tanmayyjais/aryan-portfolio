@@ -80,9 +80,9 @@ export function HeroSection() {
             <line x1="12" y1="10" x2="16" y2="16" />
             <line x1="23" y1="10" x2="27" y2="16" />
           </svg>
-          <span className="font-mono text-[0.62rem] tracking-[0.3em] uppercase text-[#c9a96e] hidden sm:inline">
+          <a href="https://www.youtube.com/@aaryannnk" target="_blank" rel="noreferrer" className="font-mono text-[0.62rem] tracking-[0.3em] uppercase text-[#c9a96e] hover:underline hidden sm:inline cursor-pointer" data-cursor="hover">
             DRISHTIIKAAR
-          </span>
+          </a>
         </div>
         <div className="font-mono text-[0.6rem] tracking-[0.22em] uppercase text-[#f5f0e8]/35 flex gap-5">
           <span>AAFT Noida</span>
