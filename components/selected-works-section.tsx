@@ -43,6 +43,54 @@ const FILMS = [
     ],
     camera: "Sony Mirrorless · 24mm Prime · DaVinci Resolve",
   },
+  {
+    id: "10-shot",
+    youtubeId: "528uVJT0cmk",
+    title: "10 Shot Cinematography Exercise",
+    genre: "Cinematography Study",
+    role: "Cinematographer",
+    year: "2024",
+    runtime: "~1 min",
+    thumbnail: "https://img.youtube.com/vi/528uVJT0cmk/maxresdefault.jpg",
+    synopsis: "A visual storytelling and composition exercise containing 10 distinct shots, carefully framed to build a cohesive narrative through imagery alone.",
+    credits: [
+      { label: "Cinematography", value: "Aryan Kumar" },
+      { label: "Concept", value: "Aryan Kumar" }
+    ],
+    camera: "Sony Mirrorless",
+  },
+  {
+    id: "sarbjit",
+    youtubeId: "7JjICVXc-UY",
+    title: "Sarbjit Scene Recreation",
+    genre: "Scene Recreation",
+    role: "Director · Cinematographer",
+    year: "2024",
+    runtime: "~2 min",
+    thumbnail: "https://img.youtube.com/vi/7JjICVXc-UY/maxresdefault.jpg",
+    synopsis: "A meticulous cinematic recreation of a scene from Sarbjit. Focusing on intense performance capture, dramatic lighting, and emotional resonance.",
+    credits: [
+      { label: "Direction", value: "Aryan Kumar" },
+      { label: "Cinematography", value: "Aryan Kumar" }
+    ],
+    camera: "Sony Mirrorless",
+  },
+  {
+    id: "aravalli-makhana",
+    youtubeId: "o3MJCidKyfo",
+    title: "Aravalli Makhana",
+    genre: "Product Film",
+    role: "Director · Animator",
+    year: "2024",
+    runtime: "~1 min",
+    thumbnail: "https://img.youtube.com/vi/o3MJCidKyfo/maxresdefault.jpg",
+    synopsis: "A creative stop-motion product film for Aravalli Makhana. Exploring rhythm, color, and texture to bring the product to life frame by frame.",
+    credits: [
+      { label: "Direction & Animation", value: "Aryan Kumar" },
+      { label: "Editing", value: "Aryan Kumar" }
+    ],
+    camera: "Sony Mirrorless",
+  },
 ];
 
 function FilmCard({ film }: { film: typeof FILMS[0] }) {
