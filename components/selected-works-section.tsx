@@ -51,7 +51,7 @@ const FILMS = [
     role: "Cinematographer",
     year: "2024",
     runtime: "~1 min",
-    thumbnail: "https://img.youtube.com/vi/528uVJT0cmk/maxresdefault.jpg",
+    thumbnail: "/media/films/10-shot.webp",
     synopsis: "A visual storytelling and composition exercise containing 10 distinct shots, carefully framed to build a cohesive narrative through imagery alone.",
     credits: [
       { label: "Cinematography", value: "Aryan Kumar" },
@@ -67,7 +67,7 @@ const FILMS = [
     role: "Director · Cinematographer",
     year: "2024",
     runtime: "~2 min",
-    thumbnail: "https://img.youtube.com/vi/7JjICVXc-UY/maxresdefault.jpg",
+    thumbnail: "/media/films/sarbjit.webp",
     synopsis: "A meticulous cinematic recreation of a scene from Sarbjit. Focusing on intense performance capture, dramatic lighting, and emotional resonance.",
     credits: [
       { label: "Direction", value: "Aryan Kumar" },
@@ -83,7 +83,7 @@ const FILMS = [
     role: "Director · Animator",
     year: "2024",
     runtime: "~1 min",
-    thumbnail: "https://img.youtube.com/vi/o3MJCidKyfo/maxresdefault.jpg",
+    thumbnail: "/media/films/aravalli-makhana.webp",
     synopsis: "A creative stop-motion product film for Aravalli Makhana. Exploring rhythm, color, and texture to bring the product to life frame by frame.",
     credits: [
       { label: "Direction & Animation", value: "Aryan Kumar" },
