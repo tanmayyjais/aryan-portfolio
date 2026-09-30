@@ -103,13 +103,13 @@ export function GallerySection() {
                     className="group relative w-full overflow-hidden rounded-xl border border-[#f5f0e8]/05 bg-[#0d0d0d] block cursor-none"
                     data-cursor="hover"
                   >
-                    <div className="relative w-full overflow-hidden" style={{ aspectRatio: img.src.includes("editorial") ? "3/4" : "16/10" }}>
+                    <div className="relative w-full overflow-hidden" style={{ aspectRatio: img.category === "Portraits" ? "2/3" : "16/9" }}>
                       <Image
                         src={img.src}
                         alt={img.caption}
                         fill
                         sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-[cubic-bezier(0.43,0.13,0.23,0.96)] group-hover:scale-105"
+                        className="object-cover transition-all duration-700 ease-[cubic-bezier(0.43,0.13,0.23,0.96)] group-hover:scale-105"
                       />
                       {/* Caption reveal */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4">
