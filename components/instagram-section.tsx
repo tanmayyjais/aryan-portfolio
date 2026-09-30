@@ -10,10 +10,6 @@ import { Reveal } from "@/components/reveal";
 const INSTAGRAM_POSTS = [
   { href: "https://www.instagram.com/drishtiikaar/", src: "/media/gallery-final/img_11.jpeg", label: "@drishtiikaar Profile", views: "Profile" },
   { href: "https://www.instagram.com/reel/Ddl80CdRmAo/?stkn=MW1mOWlua2NuN2lvMA==", src: "/media/reels/reel-2.png", label: "Composition Study", views: "Reel" },
-  { href: "https://www.instagram.com/drishtiikaar/reels/", src: "/media/reels/intellectual-01.jpg", label: "Intellectual Montage", views: "Reel" },
-  { href: "https://www.instagram.com/drishtiikaar/reels/", src: "/media/reels/montage-01.jpg", label: "Rhythm Study", views: "Reel" },
-  { href: "https://www.instagram.com/drishtiikaar/reels/", src: "/media/photography/editorial-03.jpg", label: "Portrait Series", views: "Reel" },
-  { href: "https://www.instagram.com/drishtiikaar/reels/", src: "/media/reels/ten-shot-03.jpg", label: "10 Shot Study", views: "Reel" },
 ];
 
 export function InstagramSection() {
@@ -39,7 +35,7 @@ export function InstagramSection() {
 
         {/* Visual Frames Grid (using our local thumbnails as preview cards) */}
         <Reveal>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 max-w-2xl mx-auto gap-3 sm:gap-4">
             {INSTAGRAM_POSTS.map((post, i) => (
               <motion.a
                 key={i}

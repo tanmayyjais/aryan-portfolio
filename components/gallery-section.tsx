@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
-type Category = "All" | "Portraits" | "Stills" | "BTS" | "Motion";
+type Category = "All" | "Portraits" | "Stills";
 
 const ALL_IMAGES = [
   // Portraits
@@ -21,18 +21,9 @@ const ALL_IMAGES = [
   { src: "/media/gallery-final/img_1.jpg", caption: "Cinematic Still 01", category: "Stills" as Category, exif: "Frame Study" },
   { src: "/media/gallery-final/img_2.jpg", caption: "Cinematic Still 02", category: "Stills" as Category, exif: "Frame Study" },
   { src: "/media/gallery-final/img_4.jpg", caption: "Cinematic Still 03", category: "Stills" as Category, exif: "Frame Study" },
-  { src: "/media/films/focal-void/poster.jpg", caption: "Focal Void Poster", category: "Stills" as Category, exif: "2026" },
-
-  // BTS
-  { src: "/media/personal/media__1782677888145.jpg", caption: "On Set", category: "BTS" as Category, exif: "Director" },
-  
-  // Motion Thumbnails
-  { src: "/media/reels/ten-shot-01.jpg", caption: "10 Shot Study", category: "Motion" as Category, exif: "2025" },
-  { src: "/media/reels/intellectual-01.jpg", caption: "Intellectual Montage", category: "Motion" as Category, exif: "2025" },
-  { src: "/media/reels/montage-01.jpg", caption: "Rhythm Study", category: "Motion" as Category, exif: "2025" },
 ];
 
-const TABS: Category[] = ["All", "Portraits", "Stills", "BTS", "Motion"];
+const TABS: Category[] = ["All", "Portraits", "Stills"];
 
 export function GallerySection() {
   const [activeTab, setActiveTab] = useState<Category>("All");
