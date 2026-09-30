@@ -10,7 +10,7 @@ import { Reveal } from "@/components/reveal";
 const INSTAGRAM_POSTS = [
   { href: "https://www.instagram.com/drishtiikaar/", src: "/media/gallery-final/img_11.jpeg", label: "@drishtiikaar Profile", views: "Profile" },
   { href: "https://www.instagram.com/reel/Ddl80CdRmAo/?stkn=MW1mOWlua2NuN2lvMA==", src: "/media/reels/reel-2.png", label: "Composition Study", views: "Reel" },
-  { href: "https://www.instagram.com/reel/Dd4CE9ARTBf/?stkn=ZnZvZnhpdDhnd3Zo", src: "/media/reels/reel-3.png", label: "Chandelier Shot", views: "Reel" },
+  { href: "https://www.instagram.com/reel/Dd4CE9ARTBf/?stkn=ZnZvZnhpdDhnd3Zo", src: "/media/reels/reel-3.png", label: "Live Performance", views: "Reel" },
 ];
 
 export function InstagramSection() {
