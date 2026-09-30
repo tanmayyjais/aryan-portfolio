@@ -20,7 +20,7 @@ export function InstagramSection() {
         <div className="label-row">
           <div className="space-y-2">
             <span className="eyebrow">Instagram · <a href="https://www.instagram.com/drishtiikaar/" target="_blank" rel="noreferrer" className="text-[#c9a96e] hover:underline cursor-pointer" data-cursor="hover">@drishtiikaar</a></span>
-            <h2 className="section-title">Moments Between Takes</h2>
+            <h2 className="section-title">Cinematic Reels</h2>
           </div>
           <a
             href="https://www.instagram.com/drishtiikaar/"
@@ -54,13 +54,26 @@ export function InstagramSection() {
                   alt={post.label}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover grayscale-[40%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                  className="object-cover group-hover:scale-105 transition-all duration-700"
                 />
+                {/* Always-visible Play/Link Indicator */}
+                {post.views === "Reel" && (
+                  <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-md p-2 rounded-full border border-white/10 shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  </div>
+                )}
+                {post.views === "Profile" && (
+                  <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-md p-2 rounded-full border border-white/10 shadow-lg">
+                    <Instagram className="h-3 w-3 text-white" />
+                  </div>
+                )}
                 {/* Instagram overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100">
-                  <Instagram className="h-8 w-8 text-white mb-2" />
-                  <p className="font-mono text-[0.58rem] tracking-wider uppercase text-white/80">{post.label}</p>
-                  <p className="font-mono text-[0.55rem] text-white/50 mt-1">{post.views} views</p>
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-all duration-300 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100">
+                  <p className="font-mono text-[0.65rem] tracking-wider uppercase text-white mb-1 flex items-center gap-2">
+                    <span>Watch on</span>
+                    <Instagram className="h-3.5 w-3.5" />
+                  </p>
+                  <p className="font-mono text-[0.55rem] text-[#c9a96e] mt-1">{post.label}</p>
                 </div>
               </motion.a>
             ))}
@@ -70,7 +83,7 @@ export function InstagramSection() {
         {/* CTA */}
         <Reveal className="flex flex-col items-center gap-4 pt-4 text-center">
           <p className="font-body text-[#f5f0e8]/45 max-w-sm leading-relaxed">
-            Follow along for reels, BTS, and frames that didn&apos;t make the cut but deserved to.
+            Explore more cinematic reels and short-form visual work on Instagram.
           </p>
           <a
             href="https://www.instagram.com/drishtiikaar/"
