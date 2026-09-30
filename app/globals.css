@@ -247,6 +247,7 @@ body.hide-cursor #cursor-dot {
 @media (max-width: 639px) {
   .masonry {
     display: flex;
+    align-items: center;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 1rem;
