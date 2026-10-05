@@ -68,7 +68,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#070707]/80 via-transparent to-[#070707]/40" />
 
       {/* Top bar */}
-      <div className="relative z-10 flex items-center justify-between px-6 py-5 md:px-12 border-b border-[#f5f0e8]/05 bg-black/30 backdrop-blur-sm">
+      <div className="relative z-10 hidden sm:flex items-center justify-between px-6 py-5 md:px-12 border-b border-[#f5f0e8]/05 bg-black/30 backdrop-blur-sm">
         <div className="flex items-center gap-3">
           {/* Clapperboard mini logo */}
           <svg viewBox="0 0 40 34" className="w-8 h-7 fill-none stroke-[#c9a96e]" strokeWidth="2" strokeLinecap="round">
@@ -84,7 +84,7 @@ export function HeroSection() {
             DRISHTIIKAAR
           </a>
         </div>
-        <div className="font-mono text-[0.6rem] tracking-[0.22em] uppercase text-[#f5f0e8]/35 flex gap-5">
+        <div className="font-mono text-[0.6rem] tracking-[0.22em] uppercase text-[#f5f0e8]/35 hidden lg:flex gap-5">
           <span>AAFT Noida</span>
           <span className="text-[#f5f0e8]/15">/</span>
           <span>Student Cinematographer</span>
