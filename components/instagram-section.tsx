@@ -11,6 +11,7 @@ const INSTAGRAM_POSTS = [
   { href: "https://www.instagram.com/drishtiikaar/", src: "/media/gallery-final/img_11.jpeg", label: "@drishtiikaar Profile", views: "Profile" },
   { href: "https://www.instagram.com/reel/Ddl80CdRmAo/?stkn=MW1mOWlua2NuN2lvMA==", src: "/media/reels/reel-2.png", label: "Composition Study", views: "Reel" },
   { href: "https://www.instagram.com/reel/Dd4CE9ARTBf/?stkn=ZnZvZnhpdDhnd3Zo", src: "/media/reels/reel-3.png", label: "Live Performance", views: "Reel" },
+  { href: "https://www.instagram.com/reel/Dd9Aj6ORqGY/?stkn=bDdxbWk0YWJiamFw", src: "/media/reels/reel-4.png", label: "Details", views: "Reel" },
 ];
 
 export function InstagramSection() {
@@ -36,14 +37,14 @@ export function InstagramSection() {
 
         {/* Visual Frames Grid (using our local thumbnails as preview cards) */}
         <Reveal>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
             {INSTAGRAM_POSTS.map((post, i) => (
               <motion.a
                 key={i}
                 href={post.href}
                 target="_blank"
                 rel="noreferrer"
-                className="group relative aspect-square overflow-hidden rounded-xl border border-[#f5f0e8]/05 bg-[#111] block cursor-none"
+                className="group relative aspect-[9/16] overflow-hidden rounded-xl border border-[#f5f0e8]/05 bg-[#111] block cursor-none"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
