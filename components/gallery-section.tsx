@@ -6,24 +6,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
-type Category = "All" | "Portraits" | "Stills";
+type Category = "All" | "Stills" | "Portraits";
 
 const ALL_IMAGES = [
-  // Portraits
-  { src: "/media/gallery-final/img_3.jpg", caption: "Portrait Study 01", category: "Portraits" as Category, exif: "f/1.8 · ISO 200" },
-  { src: "/media/gallery-final/img_5.jpeg", caption: "Portrait Study 02", category: "Portraits" as Category, exif: "Editorial" },
-  { src: "/media/gallery-final/img_6.jpeg", caption: "Portrait Study 03", category: "Portraits" as Category, exif: "Editorial" },
-  { src: "/media/gallery-final/img_7.jpeg", caption: "Portrait Study 04", category: "Portraits" as Category, exif: "Editorial" },
-  { src: "/media/gallery-final/img_8.jpeg", caption: "Portrait Study 05", category: "Portraits" as Category, exif: "Editorial" },
-  { src: "/media/gallery-final/img_9.jpeg", caption: "Portrait Study 06", category: "Portraits" as Category, exif: "Editorial" },
-
   // Stills
   { src: "/media/gallery-final/img_1.jpg", caption: "Cinematic Still 01", category: "Stills" as Category, exif: "Frame Study" },
   { src: "/media/gallery-final/img_2.jpg", caption: "Cinematic Still 02", category: "Stills" as Category, exif: "Frame Study" },
   { src: "/media/gallery-final/img_4.jpg", caption: "Cinematic Still 03", category: "Stills" as Category, exif: "Frame Study" },
+
+  // Portraits
+  { src: "/media/gallery-final/img_3.jpg", caption: "Portrait Study 01", category: "Portraits" as Category, exif: "f/1.8 · ISO 200" },
+  { src: "/media/gallery-final/img_6.jpeg", caption: "Portrait Study 02", category: "Portraits" as Category, exif: "Editorial" },
+  { src: "/media/gallery-final/img_7.jpeg", caption: "Portrait Study 03", category: "Portraits" as Category, exif: "Editorial" },
+  { src: "/media/gallery-final/img_8.jpeg", caption: "Portrait Study 04", category: "Portraits" as Category, exif: "Editorial" },
+  { src: "/media/gallery-final/img_9.jpeg", caption: "Portrait Study 05", category: "Portraits" as Category, exif: "Editorial" },
 ];
 
-const TABS: Category[] = ["All", "Portraits", "Stills"];
+const TABS: Category[] = ["All", "Stills", "Portraits"];
 
 export function GallerySection() {
   const [activeTab, setActiveTab] = useState<Category>("All");
