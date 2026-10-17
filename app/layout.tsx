@@ -45,12 +45,19 @@ export const metadata: Metadata = {
     url: "https://aryannkumar.vercel.app/",
     images: [
       {
-        url: "/media/photography/editorial-01.jpg",
-        width: 1280,
-        height: 1706,
-        alt: "Aryan Kumar — Cinematographer",
+        url: "/og-image.jpg",
+        width: 768,
+        height: 1024,
+        alt: "Aryan Kumar — Cinematographer & Filmmaker",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aryan Kumar | Cinematographer & Filmmaker",
+    description:
+      "BSc Cinematography student at AAFT Noida. Short films, editorial photography, motion studies.",
+    images: ["/og-image.jpg"],
   },
   metadataBase: new URL("https://aryannkumar.vercel.app"),
   robots: { index: true, follow: true },
